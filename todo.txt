@@ -1,0 +1,63 @@
+Við erum með 2 views
+    1. Sýnir öll boards
+    2. Sýnir alla lista og tasks inn í einhverju ákveðnu borði
+
+Components:
+    ListAllBoards
+        Sýnir öll borðin
+    CreateNewBoard
+    DeleteBoard
+    ModifyBoard
+
+
+Styles:
+    Create new board/task button
+    Delete list/task button
+    Move task/board/list
+    boardInBoardView
+
+
+getAllBoards
+getBoardById
+getAllListsByBoardId
+getAllTasksByListId
+
+TODO:
+    Setup Main view
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
