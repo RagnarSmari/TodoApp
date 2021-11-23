@@ -1,11 +1,20 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import BoardView from '../views/BoardView';
 import ListView from '../views/ListView';
 
-export default createAppContainer(createStackNavigator({
-  BoardView,
-  ListView,
-}));
+const Stack = createStackNavigator();
+
+const Routes = function () {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Main">
+        <Stack.Screen name="BoardView" component={BoardView} />
+        <Stack.Screen name="ListView" component={ListView} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+export default Routes;

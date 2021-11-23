@@ -6,20 +6,31 @@ import {
   Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import styles from './styles';
 // Get the data from the resources
+const Board = function ({ title, photo }) {
+  return (
+    <View>
+      <Image
+        source={{ uri: photo }}
+        style={styles.image}
+      />
+      <Text>{title}</Text>
+    </View>
+  );
+};
 
-const ListAllBoards = function ({ boards, selectedBoards }) {
-  console.log(boards, selectedBoards);
+const ListAllBoards = function ({ boards }) {
+  const renderItem = ({ item }) => (
+    <Board title={item.name} photo={item.thumbnailPhoto} />
+  );
   return (
     <View>
       <FlatList
-        numColumns={2}
         data={boards}
-        extraData={selectedBoards}
-        renderItem={({ item: { name } }) => {
-          <Text>{name}</Text>;
-        }}
-        keyExtractor={(board) => board.id}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
       />
     </View>
   );
@@ -31,11 +42,18 @@ ListAllBoards.propTypes = {
     name: PropTypes.string,
     thumbnailPhoto: PropTypes.string,
   })).isRequired,
-  selectedBoards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    thumbnailPhoto: PropTypes.string,
-  })).isRequired,
+  // selectedBoards: PropTypes.arrayOf(PropTypes.shape({
+  //   id: PropTypes.number,
+  //   name: PropTypes.string,
+  //   thumbnailPhoto: PropTypes.string,
+  // })).isRequired,
 };
 
+Board.propTypes = {
+  title: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+};
+Image.propTypes = {
+
+};
 export default ListAllBoards;

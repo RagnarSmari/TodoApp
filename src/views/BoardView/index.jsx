@@ -14,7 +14,7 @@ const BoardView = function () {
   return (
     <View style={styles.secondContainer}>
       <Text style={styles.main}>My Boards</Text>
-      <ListAllBoards boards={data} selectedBoards={data} />
+      <ListAllBoards boards={data} />
     </View>
   );
 };
