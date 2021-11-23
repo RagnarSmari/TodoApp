@@ -1,20 +1,41 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
-const data = require('../../resources/data.json');
-
+import {
+  View,
+  FlatList,
+  Text,
+  Image,
+} from 'react-native';
+import PropTypes from 'prop-types';
 // Get the data from the resources
 
-function ListAllBoards(){
-    return (
-        <View>
-            <Text>These are all the boards</Text>
-        </View>
-    )
-}
+const ListAllBoards = function ({ boards, selectedBoards }) {
+  console.log(boards, selectedBoards);
+  return (
+    <View>
+      <FlatList
+        numColumns={2}
+        data={boards}
+        extraData={selectedBoards}
+        renderItem={({ item: { name } }) => {
+          <Text>{name}</Text>;
+        }}
+        keyExtractor={(board) => board.id}
+      />
+    </View>
+  );
+};
 
-function getAlltheBoard(){
+ListAllBoards.propTypes = {
+  boards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    thumbnailPhoto: PropTypes.string,
+  })).isRequired,
+  selectedBoards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    thumbnailPhoto: PropTypes.string,
+  })).isRequired,
+};
 
-}
-
-
-export default  ListAllBoards;
+export default ListAllBoards;
