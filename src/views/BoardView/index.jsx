@@ -16,15 +16,8 @@ const BoardView = function ({ navigation: { navigate } }) {
   return (
     <View style={styles.secondContainer}>
       <Text style={styles.main}>My Boards</Text>
-      <ListAllBoards boards={data} />
+      <ListAllBoards boards={data} navigate={navigate} />
       <CreateBoardButton />
-      <TouchableHighlight
-        onPress={() => navigate('ListView', {
-          boardId: 1,
-        })}
-      >
-        <Text>Press here to go to Board with Id 1</Text>
-      </TouchableHighlight>
     </View>
   );
 };

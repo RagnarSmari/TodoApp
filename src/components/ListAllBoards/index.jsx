@@ -2,31 +2,15 @@ import React from 'react';
 import {
   View,
   FlatList,
-  Text,
-  Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
+import Board from '../ListBoard';
 // Get the data from the resources
-const Board = function ({ title, photo }) {
-  return (
-    <TouchableHighlight>
-      <View>
-        <Image
-          source={{ uri: photo }}
-          style={styles.image}
-        />
-        <Text>{title}</Text>
-      </View>
-    </TouchableHighlight>
 
-  );
-};
-
-const ListAllBoards = function ({ boards }) {
+const ListAllBoards = function ({ boards, navigate }) {
   const renderItem = ({ item }) => (
-    <Board title={item.name} photo={item.thumbnailPhoto} />
+    <Board photo={item.thumbnailPhoto} title={item.name} boardId={item.id} navigate={navigate} />
   );
   return (
     <View>
@@ -46,18 +30,11 @@ ListAllBoards.propTypes = {
     name: PropTypes.string,
     thumbnailPhoto: PropTypes.string,
   })).isRequired,
+  navigate: PropTypes.func.isRequired,
   // selectedBoards: PropTypes.arrayOf(PropTypes.shape({
   //   id: PropTypes.number,
   //   name: PropTypes.string,
   //   thumbnailPhoto: PropTypes.string,
   // })).isRequired,
-};
-
-Board.propTypes = {
-  title: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-};
-Image.propTypes = {
-
 };
 export default ListAllBoards;
