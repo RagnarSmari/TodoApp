@@ -10,7 +10,6 @@ const CreateBoardButton = function () {
       <TouchableHighlight>
         <Image style={styles.addIcon} source={require('../../../assets/add.png')} />
       </TouchableHighlight>
-
     </View>
   );
 };

@@ -6,17 +6,21 @@ import {
   Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
 // Get the data from the resources
 const Board = function ({ title, photo }) {
   return (
-    <View>
-      <Image
-        source={{ uri: photo }}
-        style={styles.image}
-      />
-      <Text>{title}</Text>
-    </View>
+    <TouchableHighlight>
+      <View>
+        <Image
+          source={{ uri: photo }}
+          style={styles.image}
+        />
+        <Text>{title}</Text>
+      </View>
+    </TouchableHighlight>
+
   );
 };
 
