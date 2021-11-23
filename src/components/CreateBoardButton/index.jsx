@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, TouchableHighlight } from 'react-native';
-import styles from '../../styles';
+import {
+  View, Text, Image, TouchableHighlight, TextComponent,
+} from 'react-native';
+import styles from './styles';
 
-const CreateBoardButton = () => {
-  <View>
-    <TouchableHighlight>
-      <View>
-        <text>Add Board</text>
-      </View>
-    </TouchableHighlight>
-  </View>;
+const CreateBoardButton = function () {
+  return (
+    <View style={styles.CreateBoardButton}>
+      <TouchableHighlight>
+        <Image style={styles.addIcon} source={require('../../../assets/add.png')} />
+      </TouchableHighlight>
+
+    </View>
+  );
 };
 
 export default CreateBoardButton;
