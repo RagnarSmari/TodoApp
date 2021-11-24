@@ -1,23 +1,35 @@
 import React, { useState } from 'react';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { Image, Text, View } from 'react-native';
+import {
+  Image, Text, View, Modal, Alert, ViewComponent, TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import styles from '../ListAllBoards/styles';
+import AddModal from '../AddModal';
 
-const boardMenu = ({ boardId }) => {
-  console.log(boardId);
+const menuOpen = () => {
+
 };
 
 const Board = function ({
   title, photo, boardId, navigate,
 }) {
+  // Deletes a board from the state array
+  const deleteBoard = () => {
+    console.log('deleting board');
+    // setLoadingBoards(true);
+    // setSelectedBoards([]);
+    // setBoards(boards.filter((board) => selectedBoard.remove(board)));
+    // setLoadingBoards(false);
+  };
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
     <TouchableHighlight
       onPress={() => navigate('ListView', {
         boardId,
       })}
-      onLongPress={() => boardMenu({ boardId })}
+      onLongPress={() => setIsAddModalOpen(true)}
     >
       <View>
         <Image
@@ -25,9 +37,22 @@ const Board = function ({
           style={styles.image}
         />
         <Text>{title}</Text>
+        <Modal
+          visible={isAddModalOpen}
+          transparent
+          onRequestClose={() => setIsAddModalOpen(false)}
+        >
+          <TouchableOpacity>
+            <Text>Update Board</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => deleteBoard()}
+          >
+            <Text>Delete Board</Text>
+          </TouchableOpacity>
+        </Modal>
       </View>
     </TouchableHighlight>
-
   );
 };
 Board.propTypes = {
@@ -37,7 +62,4 @@ Board.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-boardMenu.propTypes = {
-  boardId: PropTypes.number.isRequired,
-};
 export default Board;

@@ -19,7 +19,6 @@ const BoardView = function ({ navigation: { navigate } }) {
   // A boolean flag to indicate whether the images are being loaded or not
   const [loadingBoards, setLoadingBoards] = useState(true);
   // A boolean flag to indicate whether the modal add board is open or not
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   // const addBoard = (board) => {
   //     setLoadingBoards(true);
@@ -27,14 +26,6 @@ const BoardView = function ({ navigation: { navigate } }) {
   //     setBoards([...boards, newBoard]);
   //     setLoadingBoards(false);
   // }
-
-  // Deletes a board from the state array
-  const deleteBoard = () => {
-    setLoadingBoards(true);
-    setSelectedBoards([]);
-    setBoards(boards.filter((board) => selectedBoard.remove(board)));
-    setLoadingBoards(false);
-  };
 
   useEffect(() => {
     (async () => {

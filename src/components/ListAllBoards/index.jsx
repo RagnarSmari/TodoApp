@@ -31,10 +31,5 @@ ListAllBoards.propTypes = {
     thumbnailPhoto: PropTypes.string,
   })).isRequired,
   navigate: PropTypes.func.isRequired,
-  // selectedBoards: PropTypes.arrayOf(PropTypes.shape({
-  //   id: PropTypes.number,
-  //   name: PropTypes.string,
-  //   thumbnailPhoto: PropTypes.string,
-  // })).isRequired,
 };
 export default ListAllBoards;
