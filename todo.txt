@@ -3,7 +3,11 @@
 TODO:
     Láta listana displaya tasks rétt
     Klára öll föllin sem eiga að koma í service layerið
-    Create new board takkann virka
+    Create new board takkann virka Sigrun
+
+    Færa boards
+    Færa tasks
+
 
 
 
