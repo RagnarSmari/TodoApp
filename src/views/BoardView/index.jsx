@@ -17,7 +17,7 @@ const BoardView = function ({ navigation: { navigate } }) {
     <View style={styles.secondContainer}>
       <Text style={styles.main}>My Boards</Text>
       <ListAllBoards boards={data} navigate={navigate} />
-      <CreateBoardButton />
+      <CreateBoardButton navigate={navigate} />
     </View>
   );
 };
