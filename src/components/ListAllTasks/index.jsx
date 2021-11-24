@@ -1,19 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, Text, View } from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-const Task = function ({ name, description }) {
+const Task = function ({ name, isFinished }) {
   return (
     <View>
-      <Text>{name}</Text>
-      <Text>{description}</Text>
+      <BouncyCheckbox
+        size={25}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text={name}
+        iconStyle={{ borderColor: 'blue' }}
+        isChecked={isFinished}
+      />
     </View>
   );
 };
 
 const ListAllTasks = function ({ tasks }) {
   const renderItem = ({ item }) => (
-    <Task name={item.name} description={item.description} />
+    <Task name={item.name} description={item.description} isFinished={item.isFinished} />
   );
   return (
     <View>
@@ -40,7 +47,7 @@ ListAllTasks.propTypes = {
 
 Task.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  isFinished: PropTypes.bool.isRequired,
 };
 
 export default ListAllTasks;
