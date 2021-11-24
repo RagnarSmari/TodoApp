@@ -1,12 +1,14 @@
 
 
 TODO:
-    Láta listana displaya tasks rétt
-    Klára öll föllin sem eiga að koma í service layerið
-    Create new board takkann virka Sigrun
+    Gera pop up menu fyrir boardsin svo hægt sé að updatea eða deletea þeim
+    Setja upp checkboxes ea eh til að kynna að taskið sé búið eða óklárað
+    Dispalya listana með tasks inn rétt einsog í figma
+    Gera lists drag and dropable
+    Gera tasks drag and dropable, svo hægt sé að færa tasks á milli lista í einu boardi
+    Búa til takka svo hægt sé að búa til nýjan lista
+    Búa til takka svo hægt sé að búa til nýtt task
 
-    Færa boards
-    Færa tasks
 
 
 
