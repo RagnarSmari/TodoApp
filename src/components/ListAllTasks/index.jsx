@@ -18,7 +18,7 @@ const Task = function ({ name, isFinished }) {
         style={styles.BCheckbox}
       />
       <Text>Edit</Text>
-      <Text>   Delete</Text>
+      <Text> Delete</Text>
     </View>
   );
 };
