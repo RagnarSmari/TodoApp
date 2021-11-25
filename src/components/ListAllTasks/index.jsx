@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import styles from './styles';
 
 const Task = function ({ name, isFinished }) {
   return (
-    <View>
+    <View style={styles.container}>
       <BouncyCheckbox
         size={25}
         fillColor="blue"
@@ -13,7 +14,11 @@ const Task = function ({ name, isFinished }) {
         text={name}
         iconStyle={{ borderColor: 'blue' }}
         isChecked={isFinished}
+        textStyle={{ color: 'black' }}
+        style={styles.BCheckbox}
       />
+      <Text>Edit</Text>
+      <Text> Delete</Text>
     </View>
   );
 };

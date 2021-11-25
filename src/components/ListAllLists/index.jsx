@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import BouncyCheckbox from 'react-native-bouncy-checkbox'; import GetAllTasksByListId from '../../services/taskService/taskService';
+import GetAllTasksByListId from '../../services/taskService/taskService';
 import ListAllTasks from '../ListAllTasks';
 
 const List = function ({ name, color, id }) {

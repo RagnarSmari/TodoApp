@@ -5,13 +5,7 @@ StyleSheet.create({
     backgroundColor: '#000000',
   },
   modalView: {
-    margin: 20,
-    borderColor: '#000',
-    borderRadius: 20,
-    alignItems: 'center',
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    elevation: 2,
+    alignContent: 'center',
   },
   mView: {
     flex: 1,
