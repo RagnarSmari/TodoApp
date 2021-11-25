@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import {
-  Image, Text, View, Modal, Alert, ViewComponent, TouchableOpacity,
+  Image, Text, View, Modal, TouchableHighlight, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from '../ListAllBoards/styles';
-import AddModal from '../AddModal';
-
-const menuOpen = () => {
-
-};
 
 const Board = function ({
   title, photo, boardId, navigate,
@@ -37,26 +31,22 @@ const Board = function ({
           style={styles.image}
         />
         <Text>{title}</Text>
-        <View style={styles.mView}>
-          <Modal
-            visible={isAddModalOpen}
-            transparent
-            onRequestClose={() => setIsAddModalOpen(false)}
-            style={styles.modalView}
-            onDismiss={() => setIsAddModalOpen(false)}
-          >
-            <View style={styles.modalView}>
-              <TouchableOpacity>
-                <Text>Update Board</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => deleteBoard()}
-              >
-                <Text>Delete Board</Text>
-              </TouchableOpacity>
-            </View>
-          </Modal>
-        </View>
+        <Modal
+          visible={isAddModalOpen}
+          onRequestClose={() => setIsAddModalOpen(false)}
+          onDismiss={() => setIsAddModalOpen(false)}
+        >
+          <View style={styles.modalView}>
+            <TouchableOpacity>
+              <Text>Update Board</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => deleteBoard()}
+            >
+              <Text>Delete Board</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </View>
     </TouchableHighlight>
   );
