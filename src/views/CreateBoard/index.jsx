@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Button, Text, TextInput, SafeAreaView, TouchableHighlight, TouchableHighlightComponent,
+  Text, TextInput, View, TouchableHighlight,
 } from 'react-native';
 import styles from './styles';
 
@@ -9,13 +9,14 @@ const CreateBoard = function () {
   const [description, setDescription] = React.useState('');
 
   return (
-    <SafeAreaView>
+    <View style={styles.container}>
       <Text style={styles.text}> Name your board:</Text>
       <TextInput
         style={styles.input}
         onChangeText={(val) => setName(val)}
         value={name}
         placeholder="Enter name"
+        keyboardType="number-pad"
       />
       <Text style={styles.text}> Add a description:</Text>
 
@@ -24,14 +25,13 @@ const CreateBoard = function () {
         onChangeText={(val) => setDescription(val)}
         value={description}
         placeholder="Description(optional)"
+        keyboardType="number-pad"
       />
       <TouchableHighlight style={styles.addImageBtn}>
-        <Text>Add image</Text>
+        <Text>  Add image</Text>
       </TouchableHighlight>
-      <TouchableHighlight>
-        <Text>Save</Text>
-      </TouchableHighlight>
-    </SafeAreaView>
+
+    </View>
   );
 };
 

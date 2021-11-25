@@ -37,20 +37,26 @@ const Board = function ({
           style={styles.image}
         />
         <Text>{title}</Text>
-        <Modal
-          visible={isAddModalOpen}
-          transparent
-          onRequestClose={() => setIsAddModalOpen(false)}
-        >
-          <TouchableOpacity>
-            <Text>Update Board</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => deleteBoard()}
+        <View style={styles.mView}>
+          <Modal
+            visible={isAddModalOpen}
+            transparent
+            onRequestClose={() => setIsAddModalOpen(false)}
+            style={styles.modalView}
+            onDismiss={() => setIsAddModalOpen(false)}
           >
-            <Text>Delete Board</Text>
-          </TouchableOpacity>
-        </Modal>
+            <View style={styles.modalView}>
+              <TouchableOpacity>
+                <Text>Update Board</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => deleteBoard()}
+              >
+                <Text>Delete Board</Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        </View>
       </View>
     </TouchableHighlight>
   );
