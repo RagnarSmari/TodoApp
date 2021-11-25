@@ -8,9 +8,18 @@ import styles from './styles';
 import Board from '../ListBoard';
 // Get the data from the resources
 
-const ListAllBoards = function ({ boards, navigate }) {
+const ListAllBoards = function ({
+  boards, navigate, deleteBoard, updatingBoard,
+}) {
   const renderItem = ({ item }) => (
-    <Board photo={item.thumbnailPhoto} title={item.name} boardId={item.id} navigate={navigate} />
+    <Board
+      photo={item.thumbnailPhoto}
+      title={item.name}
+      boardId={item.id}
+      navigate={navigate}
+      deleteBoard={deleteBoard}
+      updatingBoard={updatingBoard}
+    />
   );
   return (
     <View>
@@ -31,5 +40,6 @@ ListAllBoards.propTypes = {
     thumbnailPhoto: PropTypes.string,
   })).isRequired,
   navigate: PropTypes.func.isRequired,
+  deleteBoard: PropTypes.func.isRequired,
 };
 export default ListAllBoards;

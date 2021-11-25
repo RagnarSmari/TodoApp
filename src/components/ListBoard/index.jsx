@@ -3,19 +3,13 @@ import {
   Image, Text, View, Modal, TouchableHighlight, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import NativeModal from 'react-native-modal';
 import styles from '../ListAllBoards/styles';
 
 const Board = function ({
-  title, photo, boardId, navigate,
+  title, photo, boardId, navigate, deleteBoard, updatingBoard,
 }) {
   // Deletes a board from the state array
-  const deleteBoard = () => {
-    console.log('deleting board');
-    // setLoadingBoards(true);
-    // setSelectedBoards([]);
-    // setBoards(boards.filter((board) => selectedBoard.remove(board)));
-    // setLoadingBoards(false);
-  };
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
@@ -31,22 +25,25 @@ const Board = function ({
           style={styles.image}
         />
         <Text>{title}</Text>
-        <Modal
+        <NativeModal
           visible={isAddModalOpen}
           onRequestClose={() => setIsAddModalOpen(false)}
           onDismiss={() => setIsAddModalOpen(false)}
+          hasBackdrop
         >
           <View style={styles.modalView}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={updatingBoard}
+            >
               <Text>Update Board</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => deleteBoard()}
+              onPress={deleteBoard}
             >
               <Text>Delete Board</Text>
             </TouchableOpacity>
           </View>
-        </Modal>
+        </NativeModal>
       </View>
     </TouchableHighlight>
   );
@@ -56,6 +53,7 @@ Board.propTypes = {
   photo: PropTypes.string.isRequired,
   boardId: PropTypes.number.isRequired,
   navigate: PropTypes.func.isRequired,
+  deleteBoard: PropTypes.func.isRequired,
 };
 
 export default Board;

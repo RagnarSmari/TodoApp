@@ -26,6 +26,13 @@ const BoardView = function ({ navigation: { navigate } }) {
   //     setBoards([...boards, newBoard]);
   //     setLoadingBoards(false);
   // }
+  const deleteBoard = () => {
+    console.log('deleting');
+  };
+
+  const updatingBoard = () => {
+    console.log('updating');
+  };
 
   useEffect(() => {
     (async () => {
@@ -42,7 +49,12 @@ const BoardView = function ({ navigation: { navigate } }) {
             loadingBoards
               ? <Spinner />
               : (
-                <ListAllBoards boards={boards} navigate={navigate} />
+                <ListAllBoards
+                  boards={boards}
+                  navigate={navigate}
+                  deleteBoard={() => deleteBoard()}
+                  updatingBoard={() => updatingBoard()}
+                />
               )
         }
       <CreateBoardButton navigate={navigate} />
