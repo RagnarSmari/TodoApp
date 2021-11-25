@@ -14,17 +14,15 @@ import * as data from '../../resources/data.json';
 const BoardView = function ({ navigation: { navigate } }) {
   // All images within the BoardView
   const [boards, setBoards] = useState([]);
-  // All selected boards
-  const [selectedBoard, setSelectedBoards] = useState([]);
   // A boolean flag to indicate whether the images are being loaded or not
   const [loadingBoards, setLoadingBoards] = useState(true);
   // A boolean flag to indicate whether the modal add board is open or not
 
-  const addBoard = (newBoard) => {
-    setLoadingBoards(true);
-    setBoards([...boards, newBoard]);
-    setLoadingBoards(false);
-  };
+  // const addBoard = (newBoard) => {
+  //   setLoadingBoards(true);
+  //   setBoards([...boards, newBoard]);
+  //   setLoadingBoards(false);
+  // };
   const deleteBoard = () => {
     console.log('deleting');
   };
@@ -56,14 +54,10 @@ const BoardView = function ({ navigation: { navigate } }) {
                 />
               )
         }
-      <CreateBoardButton />
+      <CreateBoardButton boards={boards} setBoards={setBoards} />
     </View>
   );
 };
-
-BoardView.navigationOptions = (_) => ({
-  title: 'BoardView',
-});
 
 BoardView.propTypes = {
   navigation: PropTypes.shape({

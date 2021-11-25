@@ -4,6 +4,11 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 10,
+    backgroundColor: 'white',
+    height: 10,
+    borderColor: '#000',
+    borderRadius: 10,
+    borderWidth: 2,
   },
 
   imageContainer: {
@@ -18,7 +23,6 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     padding: 10,
-
   },
   addImageBtn: {
     justifyContent: 'center',

@@ -15,7 +15,7 @@ export default StyleSheet.create({
     textTransform: 'capitalize',
   },
   secondContainer: {
-    flex: 2,
+    flex: 1,
     backgroundColor: 'white',
   },
 });
