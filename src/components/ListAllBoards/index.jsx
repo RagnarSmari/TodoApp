@@ -9,7 +9,7 @@ import Board from '../ListBoard';
 // Get the data from the resources
 
 const ListAllBoards = function ({
-  boards, navigate, deleteBoard, updatingBoard,
+  boards, navigate, deleteBoard, updatingBoard, lists, setLists, tasks, setTasks,
 }) {
   const renderItem = ({ item }) => (
     <Board
@@ -19,6 +19,10 @@ const ListAllBoards = function ({
       navigate={navigate}
       deleteBoard={deleteBoard}
       updatingBoard={updatingBoard}
+      lists={lists}
+      setLists={setLists}
+      tasks={tasks}
+      setTasks={setTasks}
     />
   );
   return (

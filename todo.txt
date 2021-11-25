@@ -1,10 +1,12 @@
 
 
-TODO:
-    Style appið
+    Style-a appið
+
     Láta búa til nýjan lista virka
         Muna lata notandann geta valið lit
-    Láta búa til ný tösk virka
+        Muna að geta geymt listann þegar maður fer aftur í boards og svo aftur í list
+
+    Láta búa til nýtt task virka
     Geta fært tösk á milli lista
     Geta eytt boards
     Geta eytt listum

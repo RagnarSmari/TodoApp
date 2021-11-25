@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const CreateNewListModal = function ({
-  isOpen, setIsOpen, lists, setLists, listLength,
+  isOpen, setIsOpen, lists, setLists,
 }) {
   const [ListName, setName] = React.useState('');
 
@@ -65,7 +65,6 @@ CreateNewListModal.propTypes = {
     boardId: PropTypes.number.isRequired,
   })).isRequired,
   setLists: PropTypes.func.isRequired,
-  listLength: PropTypes.number.isRequired,
 };
 
 export default CreateNewListModal;

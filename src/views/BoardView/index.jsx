@@ -12,17 +12,17 @@ import * as data from '../../resources/data.json';
 // Get all the boards and list them
 
 const BoardView = function ({ navigation: { navigate } }) {
-  // All images within the BoardView
+  // All boards within the BoardView
   const [boards, setBoards] = useState([]);
+  // All lists within the application
+  const [lists, setLists] = useState([]);
+  // All tasks within the application
+  const [tasks, setTasks] = useState([]);
   // A boolean flag to indicate whether the images are being loaded or not
   const [loadingBoards, setLoadingBoards] = useState(true);
   // A boolean flag to indicate whether the modal add board is open or not
 
-  // const addBoard = (newBoard) => {
-  //   setLoadingBoards(true);
-  //   setBoards([...boards, newBoard]);
-  //   setLoadingBoards(false);
-  // };
+  //
   const deleteBoard = () => {
     console.log('deleting');
   };
@@ -51,6 +51,10 @@ const BoardView = function ({ navigation: { navigate } }) {
                   navigate={navigate}
                   deleteBoard={() => deleteBoard()}
                   updatingBoard={() => updatingBoard()}
+                  lists={lists}
+                  setLists={setLists}
+                  tasks={tasks}
+                  setTasks={setTasks}
                 />
               )
         }

@@ -3,12 +3,24 @@ import NativeModal from 'react-native-modal';
 import {
   Text, TextInput, TouchableHighlight, View,
 } from 'react-native';
-import styles from '../AddNewTask/styles';
+import styles from './styles';
 
 const CreateTaskModal = function ({
-  isOpen, setIsOpen, tasks, setTasks,
+  isOpen, setIsOpen, tasks, setTasks, listId,
 }) {
   const [TaskName, setName] = React.useState('');
+
+  const createNewTask = () => {
+    const newTask = {
+      id: Math.random() * 100000,
+      name: TaskName,
+      description: '',
+      isFinished: false,
+      listId,
+    };
+    setTasks([...tasks, newTask]);
+  };
+
   return (
     <NativeModal
       isVisible={isOpen}
@@ -16,16 +28,18 @@ const CreateTaskModal = function ({
       onDismiss={() => setIsOpen(false)}
       hasBackdrop
     >
-      <View>
+      <View style={styles.container}>
         <Text style={styles.text}> New task:</Text>
         <TextInput
           style={styles.input}
           onChangeText={(val) => setName(val)}
           value={TaskName}
           placeholder="Enter name"
-          keyboardType="Default"
+          keyboardType="default"
         />
-        <TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => createNewTask(listId)}
+        >
           <Text>
             Save task
           </Text>

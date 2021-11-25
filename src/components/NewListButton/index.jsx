@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import CreateNewListModal from '../CreateNewListModal';
 
-const NewListButton = function ({ lists, setLists, listLength }) {
+const NewListButton = function ({ lists, setLists }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   return (
@@ -18,7 +18,6 @@ const NewListButton = function ({ lists, setLists, listLength }) {
         setIsOpen={setIsAddModalOpen}
         lists={lists}
         setLists={setLists}
-        listLength={listLength}
       />
     </View>
 
@@ -33,7 +32,6 @@ NewListButton.propTypes = {
     boardId: PropTypes.number.isRequired,
   })).isRequired,
   setLists: PropTypes.func.isRequired,
-  listLength: PropTypes.number.isRequired,
 
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,
+  View, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Spinner from '../../components/Spinner';
@@ -15,18 +15,15 @@ const ListView = function ({ route }) {
   const { boardId } = params;
 
   const [lists, setLists] = useState([]);
-  const [loadingLists, setLoadingLists] = useState(true);
+  const [tasks, setTasks] = useState([]);
 
-  const deleteList = () => {
-    console.log('deleting list');
-  };
-  const updatingList = () => {
-    console.log('updating List');
-  };
+  const [loadingLists, setLoadingLists] = useState(true);
 
   useEffect(() => {
     (async () => {
       const allLists = data.lists.filter((s) => s.boardId === boardId);
+      const allTasks = data.tasks;
+      setTasks(allTasks);
       setLists(allLists);
       setLoadingLists(false);
     })();
@@ -34,12 +31,12 @@ const ListView = function ({ route }) {
   return (
     <View>
       {
-          loadingLists
-            ? <Spinner />
-            : (
-              <ListAllLists lists={lists} setLists={setLists} listLength={data.lists.length} />
-            )
-        }
+        loadingLists
+          ? <Spinner />
+          : (
+            <ListAllLists lists={lists} setLists={setLists} tasks={tasks} setTasks={setTasks} />
+          )
+      }
     </View>
 
   );
@@ -50,7 +47,6 @@ ListView.propTypes = {
     key: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     params: PropTypes.shape({
-      boardId: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
 };

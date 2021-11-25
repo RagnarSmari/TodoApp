@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
+import * as data from '../../resources/data.json';
 import AddNewTask from '../AddNewTask';
 import CreateTaskModal from '../CreateTaskModal';
 
@@ -26,10 +27,10 @@ const Task = function ({ name, isFinished }) {
   );
 };
 
-const ListAllTasks = function ({ tasks, setTasks }) {
+const ListAllTasks = function ({ tasks, setTasks, listId }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const renderItem = ({ item }) => (
-    <Task name={item.name} description={item.description} isFinished={item.isFinished} />
+    <Task name={item.name} isFinished={item.isFinished} />
   );
   return (
     <View>
@@ -49,6 +50,7 @@ const ListAllTasks = function ({ tasks, setTasks }) {
         setIsOpen={setIsAddModalOpen}
         tasks={tasks}
         setTasks={setTasks}
+        listId={listId}
       />
     </View>
   );
