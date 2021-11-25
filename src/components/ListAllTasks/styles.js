@@ -8,6 +8,6 @@ export default StyleSheet.create({
 
   },
   BCheckbox: {
-    width: '80%',
+    width: '75%',
   },
 });
