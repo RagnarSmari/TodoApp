@@ -8,25 +8,21 @@ import ListAllBoards from '../../components/ListAllBoards';
 import CreateBoardButton from '../../components/CreateBoardButton';
 import Spinner from '../../components/Spinner';
 import * as data from '../../resources/data.json';
-import AddNewList from '../../components/AddNewList';
 // Here is the main view
 // Get all the boards and list them
 
 const BoardView = function ({ navigation: { navigate } }) {
   // All images within the BoardView
   const [boards, setBoards] = useState([]);
-  // All selected boards
-  const [selectedBoard, setSelectedBoards] = useState([]);
   // A boolean flag to indicate whether the images are being loaded or not
   const [loadingBoards, setLoadingBoards] = useState(true);
   // A boolean flag to indicate whether the modal add board is open or not
 
-  // const addBoard = (board) => {
-  //     setLoadingBoards(true);
-  //     const newBoard = await CreateBoard(board);
-  //     setBoards([...boards, newBoard]);
-  //     setLoadingBoards(false);
-  // }
+  // const addBoard = (newBoard) => {
+  //   setLoadingBoards(true);
+  //   setBoards([...boards, newBoard]);
+  //   setLoadingBoards(false);
+  // };
   const deleteBoard = () => {
     console.log('deleting');
   };
@@ -58,16 +54,10 @@ const BoardView = function ({ navigation: { navigate } }) {
                 />
               )
         }
-      <CreateBoardButton navigate={navigate} />
-      <AddNewList />
-      <AddNewList />
+      <CreateBoardButton boards={boards} setBoards={setBoards} />
     </View>
   );
 };
-
-BoardView.navigationOptions = (_) => ({
-  title: 'BoardView',
-});
 
 BoardView.propTypes = {
   navigation: PropTypes.shape({
