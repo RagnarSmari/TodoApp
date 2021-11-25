@@ -9,6 +9,15 @@ const CreateBoard = function () {
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
 
+  const createBoardObject = () => {
+    const imgUrl = 'https://i.pinimg.com/474x/45/11/c5/4511c5871ff8011385b023be70878d81.jpg';
+    const newBoard = {
+      name,
+      thumbnailPhoto: imgUrl,
+    };
+    return newBoard;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -22,7 +31,7 @@ const CreateBoard = function () {
         onChangeText={(val) => setName(val)}
         value={name}
         placeholder="Enter name"
-        keyboardType="number-pad"
+        keyboardType="default"
       />
       <Text style={styles.text}> Add a description:</Text>
 
@@ -31,12 +40,13 @@ const CreateBoard = function () {
         onChangeText={(val) => setDescription(val)}
         value={description}
         placeholder="Description(optional)"
-        keyboardType="number-pad"
+        keyboardType="default"
       />
-      <TouchableHighlight>
+      <TouchableHighlight
+        onPress={() => createBoardObject(name, description)}
+      >
         <Text>Save</Text>
       </TouchableHighlight>
-
     </View>
   );
 };

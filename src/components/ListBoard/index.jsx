@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {
-  Image, Text, View, Modal, TouchableHighlight, TouchableOpacity,
+  Image, Text, View, TouchableHighlight, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import NativeModal from 'react-native-modal';
-import styles from '../ListAllBoards/styles';
+import styles from './styles';
 
 const Board = function ({
   title, photo, boardId, navigate, deleteBoard, updatingBoard,
@@ -54,6 +54,7 @@ Board.propTypes = {
   boardId: PropTypes.number.isRequired,
   navigate: PropTypes.func.isRequired,
   deleteBoard: PropTypes.func.isRequired,
+  updatingBoard: PropTypes.func.isRequired,
 };
 
 export default Board;

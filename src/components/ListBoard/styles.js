@@ -1,16 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-StyleSheet.create({
-  modal: {
-    backgroundColor: '#000000',
+export default StyleSheet.create({
+  image: {
+    width: 180,
+    height: 180,
+    margin: 3.5,
+    borderRadius: 20,
   },
   modalView: {
-    alignContent: 'center',
-  },
-  mView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
+    backgroundColor: '#000',
   },
 });

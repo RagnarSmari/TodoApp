@@ -20,12 +20,11 @@ const BoardView = function ({ navigation: { navigate } }) {
   const [loadingBoards, setLoadingBoards] = useState(true);
   // A boolean flag to indicate whether the modal add board is open or not
 
-  // const addBoard = (board) => {
-  //     setLoadingBoards(true);
-  //     const newBoard = await CreateBoard(board);
-  //     setBoards([...boards, newBoard]);
-  //     setLoadingBoards(false);
-  // }
+  const addBoard = (newBoard) => {
+    setLoadingBoards(true);
+    setBoards([...boards, newBoard]);
+    setLoadingBoards(false);
+  };
   const deleteBoard = () => {
     console.log('deleting');
   };
@@ -57,7 +56,7 @@ const BoardView = function ({ navigation: { navigate } }) {
                 />
               )
         }
-      <CreateBoardButton navigate={navigate} />
+      <CreateBoardButton />
     </View>
   );
 };
