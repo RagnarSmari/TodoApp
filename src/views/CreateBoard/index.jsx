@@ -36,7 +36,6 @@ const CreateBoard = function () {
       <TouchableHighlight>
         <Text>Save</Text>
       </TouchableHighlight>
-
     </View>
   );
 };

@@ -8,6 +8,7 @@ import ListAllBoards from '../../components/ListAllBoards';
 import CreateBoardButton from '../../components/CreateBoardButton';
 import Spinner from '../../components/Spinner';
 import * as data from '../../resources/data.json';
+import AddNewList from '../../components/AddNewList';
 // Here is the main view
 // Get all the boards and list them
 
@@ -58,6 +59,8 @@ const BoardView = function ({ navigation: { navigate } }) {
               )
         }
       <CreateBoardButton navigate={navigate} />
+      <AddNewList />
+      <AddNewList />
     </View>
   );
 };
