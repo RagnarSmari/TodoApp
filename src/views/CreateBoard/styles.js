@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+  },
+
   input: {
     flexDirection: 'row',
     height: 40,
@@ -12,10 +18,10 @@ export default StyleSheet.create({
 
   },
   addImageBtn: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 80,
+    backgroundColor: '#b8d5cd',
+    padding: 10,
+    borderRadius: 8,
   },
 
   text: {
