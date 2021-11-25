@@ -8,6 +8,18 @@ export default StyleSheet.create({
     borderRadius: 20,
   },
   modalView: {
-    backgroundColor: '#000',
+    backgroundColor: 'white',
+    justifyContent: 'flex-end',
+    margin: 0,
+    height: '20%',
+
+  },
+  view: {
+    justifyContent: 'flex-end',
+    margin: 0,
+
+  },
+  update: {
+    justifyContent: 'center',
   },
 });

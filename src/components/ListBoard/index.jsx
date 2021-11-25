@@ -26,16 +26,21 @@ const Board = function ({
         />
         <Text>{title}</Text>
         <NativeModal
+          style={styles.view}
           visible={isAddModalOpen}
+          animationIn="slideInUp"
           onRequestClose={() => setIsAddModalOpen(false)}
           onDismiss={() => setIsAddModalOpen(false)}
+          // onSwipeComplete={this.close}
+          swipeDirection={['down']}
           hasBackdrop
+
         >
           <View style={styles.modalView}>
             <TouchableOpacity
               onPress={updatingBoard}
             >
-              <Text>Update Board</Text>
+              <Text style={styles.update}>Update Board</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={deleteBoard}
