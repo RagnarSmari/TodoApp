@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Text,
+  View,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import getAllListsByBoardId from '../../services/listService/listService';
+import Spinner from '../../components/Spinner';
+import * as data from '../../resources/data.json';
 import ListAllLists from '../../components/ListAllLists';
 
 // Here is a view of each board
@@ -12,9 +13,35 @@ import ListAllLists from '../../components/ListAllLists';
 const ListView = function ({ route }) {
   const { params } = route;
   const { boardId } = params;
-  const allLists = getAllListsByBoardId(boardId);
+
+  const [lists, setLists] = useState([]);
+  const [loadingLists, setLoadingLists] = useState(true);
+
+  const deleteList = () => {
+    console.log('deleting list');
+  };
+  const updatingList = () => {
+    console.log('updating List');
+  };
+
+  useEffect(() => {
+    (async () => {
+      const allLists = data.lists.filter((s) => s.boardId === boardId);
+      setLists(allLists);
+      setLoadingLists(false);
+    })();
+  }, []);
   return (
-    <ListAllLists lists={allLists} />
+    <View>
+      {
+          loadingLists
+            ? <Spinner />
+            : (
+              <ListAllLists lists={lists} setLists={setLists} listLength={data.lists.length} />
+            )
+        }
+    </View>
+
   );
 };
 

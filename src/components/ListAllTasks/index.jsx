@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
+import AddNewTask from '../AddNewTask';
+import CreateTaskModal from '../CreateTaskModal';
 
 const Task = function ({ name, isFinished }) {
   return (
@@ -23,7 +26,8 @@ const Task = function ({ name, isFinished }) {
   );
 };
 
-const ListAllTasks = function ({ tasks }) {
+const ListAllTasks = function ({ tasks, setTasks }) {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const renderItem = ({ item }) => (
     <Task name={item.name} description={item.description} isFinished={item.isFinished} />
   );
@@ -34,6 +38,17 @@ const ListAllTasks = function ({ tasks }) {
         renderItem={renderItem}
         numColumns={1}
         keyExtractor={((list) => list.id)}
+      />
+      <TouchableHighlight
+        onPress={() => setIsAddModalOpen(true)}
+      >
+        <Text>Create new task</Text>
+      </TouchableHighlight>
+      <CreateTaskModal
+        isOpen={isAddModalOpen}
+        setIsOpen={setIsAddModalOpen}
+        tasks={tasks}
+        setTasks={setTasks}
       />
     </View>
   );
@@ -48,6 +63,7 @@ ListAllTasks.propTypes = {
     listId: PropTypes.number,
 
   })).isRequired,
+  setTasks: PropTypes.func.isRequired,
 };
 
 Task.propTypes = {

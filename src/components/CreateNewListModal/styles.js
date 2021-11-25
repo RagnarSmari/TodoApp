@@ -10,4 +10,7 @@ export default StyleSheet.create({
     padding: 10,
 
   },
+  container: {
+    backgroundColor: 'white',
+  },
 });

@@ -1,12 +1,18 @@
 
 
 TODO:
-    Gera pop up menu fyrir boardsin svo hægt sé að updatea eða deletea þeim
-    Dispalya listana með tasks inn rétt einsog í figma
-    Gera lists drag and dropable
-    Gera tasks drag and dropable, svo hægt sé að færa tasks á milli lista í einu boardi
-    Búa til takka svo hægt sé að búa til nýjan lista
-    Búa til takka svo hægt sé að búa til nýtt task
+    Style appið
+    Láta búa til nýjan lista virka
+        Muna lata notandann geta valið lit
+    Láta búa til ný tösk virka
+    Geta fært tösk á milli lista
+    Geta eytt boards
+    Geta eytt listum
+    Geta eytt tasks
+    Geta breytt boards
+    Geta breytt tasks
+    Geta breytt lists
+
 
 
 

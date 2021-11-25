@@ -41,5 +41,6 @@ ListAllBoards.propTypes = {
   })).isRequired,
   navigate: PropTypes.func.isRequired,
   deleteBoard: PropTypes.func.isRequired,
+  updatingBoard: PropTypes.func.isRequired,
 };
 export default ListAllBoards;
