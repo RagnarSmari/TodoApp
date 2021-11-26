@@ -29,7 +29,6 @@ const CreateNewListModal = function ({
       onDismiss={() => setIsOpen(false)}
       hasBackdrop
       onBackdropPress={() => setIsOpen(false)}
-
     >
       <View style={styles.container}>
         <Text style={styles.text}> New list:</Text>

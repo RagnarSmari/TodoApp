@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  View, Text, Image, TouchableHighlight, TextComponent, TextInput,
+  View, Text, Image, TouchableHighlight, TextComponent, TextInput, Button,
 } from 'react-native';
 import NativeModal from 'react-native-modal';
 import PropTypes from 'prop-types';
+import * as ImagePicker from 'expo-image-picker';
 import styles from './styles';
 import photo from '../../../assets/image.png';
 
@@ -12,9 +13,25 @@ const CreateBoardModal = function ({
 }) {
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    // console.log(result.uri);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
   const createBoardObject = () => {
-    const imgUrl = 'https://i.pinimg.com/474x/45/11/c5/4511c5871ff8011385b023be70878d81.jpg';
+    const imgUrl = image;
     const id = boards.length + 1;
     const newBoard = {
       id,
@@ -33,10 +50,9 @@ const CreateBoardModal = function ({
       onBackdropPress={() => setIsOpen(false)}
     >
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <TouchableHighlight style={styles.addImageBtn}>
-            <Image style={styles.addIcon} source={photo} />
-          </TouchableHighlight>
+        <View>
+          <Button title="Pick an image from camera roll" onPress={pickImage} />
+          {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
         </View>
         <Text style={styles.text}> Name your board:</Text>
         <TextInput
@@ -77,5 +93,4 @@ CreateBoardModal.propTypes = {
   setBoards: PropTypes.func.isRequired,
 
 };
-
 export default CreateBoardModal;

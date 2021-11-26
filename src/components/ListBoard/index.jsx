@@ -18,6 +18,7 @@ const Board = function ({
   const [updateBoard, setUpdateBoard] = useState(false);
   const [listIsOpen, setListIsOpen] = useState(false);
   const [isModalVisible, setModalVisible] = useState(true);
+  const [image, setImage] = useState(null);
 
   const updatingBoard = () => {
     setUpdateBoard(true);
@@ -53,7 +54,6 @@ const Board = function ({
             swipeDirection={['right']}
             onSwipeComplete={() => setListIsOpen(false)}
             style={styles.listview}
-
           >
             <View style={styles.listcontainer}>
               <ListAllLists
@@ -72,12 +72,11 @@ const Board = function ({
             animationIn="slideInUp"
             onRequestClose={() => setIsAddModalOpen(false)}
             onDismiss={() => setIsAddModalOpen(false)}
-            // swipeDirection={['down']}
-            // onSwipeComplete={setListIsOpen(false)}
+                // swipeDirection={['down']}
+                // onSwipeComplete={setListIsOpen(false)}
             onBackButtonPress={() => setListIsOpen(false)}
             hasBackdrop
             onBackdropPress={() => setListIsOpen(false)}
-
           >
             <View style={styles.modalView}>
               <TouchableOpacity
