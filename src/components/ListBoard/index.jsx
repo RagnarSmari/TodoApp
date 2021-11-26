@@ -69,16 +69,22 @@ const Board = function ({
             onBackdropPress={() => setIsAddModalOpen(false)}
           >
             <View style={styles.modalView}>
-              <TouchableOpacity
+              <TouchableHighlight
+                style={styles.UpdateBtn}
                 onPress={() => setUpdateBoard(true)}
               >
-                <Text style={styles.update}>Update Board</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+                <Text>
+                  Update Board
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.DeleteBtn}
                 onPress={deleteBoard}
               >
-                <Text>Delete Board</Text>
-              </TouchableOpacity>
+                <Text>
+                  Delete Board
+                </Text>
+              </TouchableHighlight>
             </View>
           </NativeModal>
           <UpdateBoardModal

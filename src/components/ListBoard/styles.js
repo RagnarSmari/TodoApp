@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { white } from '../../styles/colors';
+import { gray, white } from '../../styles/colors';
 
 export default StyleSheet.create({
   image: {
@@ -9,10 +9,11 @@ export default StyleSheet.create({
     borderRadius: 20,
   },
   modalView: {
-    backgroundColor: white,
+    backgroundColor: '#dbdbdb',
     justifyContent: 'flex-end',
     margin: 0,
     height: '20%',
+    borderRadius: 10,
 
   },
   listview: {
@@ -34,5 +35,23 @@ export default StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     fontSize: 15,
+  },
+  DeleteBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
+    borderRadius: 10,
+    margin: 10,
+    height: 45,
+  },
+  UpdateBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'green',
+    borderRadius: 10,
+    margin: 10,
+    height: 45,
   },
 });
