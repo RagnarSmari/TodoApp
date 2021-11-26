@@ -15,7 +15,7 @@ const List = function ({
 }) {
   const [listOptions, setListOptions] = useState(false);
   const [listName, setListName] = React.useState('');
-  const [listColor, setListColor] = React.useState('');
+  const [listColor, setListColor] = React.useState('red');
 
   const saveListChanges = () => {
     setListOptions(false);
@@ -43,41 +43,70 @@ const List = function ({
       <NativeModal
         isVisible={listOptions}
         animationIn="slideInUp"
-        style={styles.ModalContainerCreateList}
       >
-        <Button
-          title="Close"
-          background
-          onPress={() => setListOptions(false)}
-        />
-        <Button
-          title="Delete List"
-          onPress={() => deleteList()}
-        />
-        <Text style={styles.text}>Name:</Text>
-        <TextInput
-          style={styles.input}
-          value={listName}
-          onChangeText={(s) => setListName(s)}
-          placeholder="New name of list"
-          keyboardType="default"
-        />
-        <Text>New Color(Please put hex value, we recommend #964B00 (brown))</Text>
-
-        <TextInput
-          style={styles.input}
-
-          value={listColor}
-          onChangeText={(s) => setListColor(s)}
-          placeholder="New color of list"
-          keyboardType="default"
-        />
-        <Button
-          onPress={() => saveListChanges()}
-          title="Save Changes"
-        />
+        <View style={styles.ModalContainerCreateList}>
+          <Button
+            title="Delete List"
+            onPress={() => deleteList()}
+          />
+          <Text style={styles.text}>List Name</Text>
+          <TextInput
+            style={styles.input}
+            value={listName}
+            onChangeText={(s) => setListName(s)}
+            placeholder="New name of list"
+            keyboardType="default"
+          />
+          <Text style={styles.text}>Color</Text>
+          <TextInput
+            style={styles.input}
+            value={listColor}
+            onChangeText={(s) => setListColor(s)}
+            placeholder="New color of list"
+            keyboardType="default"
+          />
+          <View style={[styles.addColorBtn, { backgroundColor: listColor }]} />
+          <View style={styles.ColorContainer}>
+            <TouchableOpacity onPress={() => setListColor('red')}>
+              <View style={[styles.box, { backgroundColor: 'red' }]} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setListColor('orange')}>
+              <View style={[styles.box, { backgroundColor: 'orange' }]} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setListColor('mediumseagreen')}>
+              <View style={[styles.box, { backgroundColor: 'mediumseagreen' }]} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setListColor('deepskyblue')}>
+              <View style={[styles.box, { backgroundColor: 'deepskyblue' }]} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setListColor('mediumturquoise')}>
+              <View style={[styles.box, { backgroundColor: 'mediumturquoise' }]} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setListColor('mediumslateblue')}>
+              <View style={[styles.box, { backgroundColor: 'mediumslateblue' }]} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setListColor('purple')}>
+              <View style={[styles.box, { backgroundColor: 'purple' }]} />
+            </TouchableOpacity>
+          </View>
+          <Button
+            onPress={() => saveListChanges()}
+            title="Save Changes"
+          />
+          <Button
+            title="Close"
+            background
+            onPress={() => setListOptions(false)}
+          />
+        </View>
       </NativeModal>
-      <ListAllTasks tasks={tasks} setTasks={setTasks} listId={listId} allTasks={allTasks} allLists={lists} />
+      <ListAllTasks
+        tasks={tasks}
+        setTasks={setTasks}
+        listId={listId}
+        allTasks={allTasks}
+        allLists={lists}
+      />
     </View>
   );
 };

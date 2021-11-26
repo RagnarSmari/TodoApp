@@ -92,7 +92,7 @@ const Task = function ({
         </View>
         <View>
           <TouchableOpacity onPress={() => setMoveTaskMenu(true)}>
-            <Text>Move Task</Text>
+            <Text>Move Task     </Text>
           </TouchableOpacity>
         </View>
 
