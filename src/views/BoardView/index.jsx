@@ -44,6 +44,7 @@ const BoardView = function ({ navigation: { navigate } }) {
       />
       <CreateBoardButton boards={boards} setBoards={setBoards} />
     </View>
+
   );
 };
 

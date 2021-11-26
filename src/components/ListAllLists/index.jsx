@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import ListAllTasks from '../ListAllTasks';
+import styles from './styles';
 
 import NewListButton from '../NewListButton';
 
@@ -10,8 +11,8 @@ const List = function ({
   name, color, tasks, setTasks, lists, setLists, listId, allTasks,
 }) {
   return (
-    <View style={{ backgroundColor: color }}>
-      <Text>{name}</Text>
+    <View style={{ backgroundColor: color, margin: 5, borderRadius: 10 }}>
+      <Text style={styles.textStyle}>{name}</Text>
       <ListAllTasks tasks={tasks} setTasks={setTasks} listId={listId} allTasks={allTasks} />
     </View>
   );

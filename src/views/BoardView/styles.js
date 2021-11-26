@@ -9,13 +9,13 @@ export default StyleSheet.create({
     padding: 20,
     backgroundColor: gray,
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 18,
     textAlign: 'center',
-    justifyContent: 'space-around',
     textTransform: 'capitalize',
   },
   secondContainer: {
     flex: 1,
+    alignItems: 'center',
     backgroundColor: 'white',
   },
 });

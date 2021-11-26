@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import CreateNewListModal from '../CreateNewListModal';
+import styles from './styles';
 
 const NewListButton = function ({ lists, setLists }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity
         onPress={() => setIsAddModalOpen(true)}
       >

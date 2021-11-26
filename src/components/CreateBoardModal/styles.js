@@ -3,12 +3,10 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     paddingHorizontal: 10,
     backgroundColor: 'white',
-    height: 10,
-    borderColor: '#000',
     borderRadius: 10,
-    borderWidth: 2,
   },
 
   imageContainer: {

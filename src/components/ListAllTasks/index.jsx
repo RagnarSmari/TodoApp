@@ -27,20 +27,14 @@ const Task = function ({
     <View style={styles.container}>
       <BouncyCheckbox
         size={25}
-        fillColor="blue"
+        fillColor="green"
         unfillColor="#FFFFFF"
         text={name}
-        iconStyle={{ borderColor: 'blue' }}
+        iconStyle={{ borderColor: 'gray' }}
         isChecked={isFinished}
         textStyle={{ color: 'black' }}
         style={styles.BCheckbox}
       />
-      {/* <TouchableOpacity */}
-      {/*  style={styles.editTask} */}
-      {/*  onPress={editTask} */}
-      {/* > */}
-      {/*  <Text>Edit</Text> */}
-      {/* </TouchableOpacity> */}
       <View style={styles.EditBtnContainer}>
         <Button
           style={styles.button}
@@ -54,7 +48,6 @@ const Task = function ({
           onPress={deleteTask}
         />
       </View>
-
       <NativeModal
         isVisible={editingTask}
         style={{ backgroundColor: 'white' }}
@@ -73,12 +66,6 @@ const Task = function ({
         </TouchableOpacity>
       </NativeModal>
 
-      {/* <TouchableOpacity */}
-      {/*  onPress={deleteTask} */}
-      {/* > */}
-      {/*  <Text>      Delete</Text> */}
-      {/* </TouchableOpacity> */}
-
     </View>
   );
 };
@@ -91,7 +78,7 @@ const ListAllTasks = function ({
     <Task name={item.name} isFinished={item.isFinished} tasks={tasks} setTasks={setTasks} taskId={item.id} allTasks={allTasks} />
   );
   return (
-    <View>
+    <View style={styles.listContainer}>
       <FlatList
         data={tasks}
         renderItem={renderItem}
@@ -99,9 +86,10 @@ const ListAllTasks = function ({
         keyExtractor={((list) => list.id)}
       />
       <TouchableHighlight
+        style={styles.newTaskButton}
         onPress={() => setIsAddModalOpen(true)}
       >
-        <Text>Create new task</Text>
+        <Text style={styles.newTaskText}>Create new task</Text>
       </TouchableHighlight>
       <CreateTaskModal
         isOpen={isAddModalOpen}
