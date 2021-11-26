@@ -43,6 +43,8 @@ const List = function ({
       <NativeModal
         isVisible={listOptions}
         animationIn="slideInUp"
+        onBackdropPress={() => setListOptions(false)}
+        onBackButtonPress={() => setListOptions(false)}
       >
         <View style={styles.ModalContainerCreateList}>
           <Button

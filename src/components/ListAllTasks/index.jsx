@@ -115,43 +115,45 @@ const Task = function ({
 
         <NativeModal
           isVisible={showDescription}
-          style={{ backgroundColor: 'white' }}
           onRequestClose={() => setShowDescription(false)}
+          onBackdropPress={() => setShowDescription(false)}
+          onBackButtonPress={() => setShowDescription(false)}
         >
-          <Button
-            title="close"
-            onPress={() => setShowDescription(false)}
-          />
-          <Text>{description}</Text>
+          <View style={styles.DescriptionContainer}>
+            <Text style={styles.DescriptionText}>{description}</Text>
+          </View>
+
         </NativeModal>
       </View>
       <NativeModal
         isVisible={editingTask}
-        style={{ backgroundColor: 'white' }}
         onRequestClose={() => setEditingTask(false)}
+        onBackdropPress={() => setEditingTask(false)}
+        onBackButtonPress={() => setEditingTask(false)}
+
       >
-        <Button
-          title="CLose"
-          onPress={() => setEditingTask(false)}
-        />
-        <Text>Edit name of task</Text>
-        <TextInput
-          value={editName}
-          onChangeText={(val) => setEditName(val)}
-          placeholder="New Name of task"
-          keyboardType="default"
-        />
-        <Text>Edit description of task</Text>
-        <TextInput
-          value={editDescription}
-          onChangeText={(val) => setEditDescription(val)}
-          placeholder="New description of task"
-          keyboardType="default"
-        />
-        <Button
-          title="Save"
-          onPress={editTask}
-        />
+        <View style={styles.ModalContainer}>
+          <Text style={styles.text}>Edit name of task</Text>
+          <TextInput
+            style={styles.input}
+            value={editName}
+            onChangeText={(val) => setEditName(val)}
+            placeholder="New Name of task"
+            keyboardType="default"
+          />
+          <Text style={styles.text}>Edit description of task</Text>
+          <TextInput
+            style={styles.input}
+            value={editDescription}
+            onChangeText={(val) => setEditDescription(val)}
+            placeholder="New description of task"
+            keyboardType="default"
+          />
+          <Button
+            title="Save"
+            onPress={editTask}
+          />
+        </View>
 
       </NativeModal>
 
