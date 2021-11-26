@@ -53,6 +53,14 @@ const Task = function ({
     );
   };
 
+  const changeTaskChecked = () => {
+    const newTaskArr = allTasks;
+    const ind = newTaskArr.findIndex((s) => s.id === taskId);
+    newTaskArr[ind].isFinished = !isFinished;
+    setTasks(newTaskArr);
+    setTasks([...newTaskArr]);
+  };
+
   return (
     <View style={styles.container}>
       <BouncyCheckbox
@@ -62,6 +70,7 @@ const Task = function ({
         text={name}
         iconStyle={{ borderColor: 'gray' }}
         isChecked={isFinished}
+        onPress={() => changeTaskChecked()}
         textStyle={{ color: 'black' }}
         style={styles.BCheckbox}
       />
