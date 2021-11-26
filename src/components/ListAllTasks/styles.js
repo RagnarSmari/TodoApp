@@ -18,9 +18,9 @@ export default StyleSheet.create({
   },
   DeleteBtnContainer: {
     flex: 2,
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
   },
   BtnContainer: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
   },
 });
