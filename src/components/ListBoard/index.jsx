@@ -18,15 +18,18 @@ const Board = function ({
   const [updateBoard, setUpdateBoard] = useState(false);
   const [listIsOpen, setListIsOpen] = useState(false);
   const [isModalVisible, setModalVisible] = useState(true);
-  // <UpdateBoardModal
-  //     boardId={boardId}
-  //     setBoards={setBoards}
-  //     boards={boards}
-  //     setUpdateBoard={setUpdateBoard}
-  //     UpdateBoard={updateBoard}
-  // />
+
   const updatingBoard = () => {
-    console.log('updating');
+    setUpdateBoard(true);
+    return (
+      <UpdateBoardModal
+        boardId={boardId}
+        setBoards={setBoards}
+        boards={boards}
+        setUpdateBoard={setUpdateBoard}
+        UpdateBoard={updateBoard}
+      />
+    );
   };
   const deleteBoard = () => {
     setBoards(boards.filter((item) => item.id !== boardId));
@@ -69,14 +72,16 @@ const Board = function ({
             animationIn="slideInUp"
             onRequestClose={() => setIsAddModalOpen(false)}
             onDismiss={() => setIsAddModalOpen(false)}
-              // onSwipeComplete={this.close}
-            swipeDirection={['down']}
+            // swipeDirection={['down']}
+            // onSwipeComplete={setListIsOpen(false)}
+            onBackButtonPress={() => setListIsOpen(false)}
             hasBackdrop
+            onBackdropPress={() => setListIsOpen(false)}
 
           >
             <View style={styles.modalView}>
               <TouchableOpacity
-                onPress={updatingBoard}
+                onPress={() => setUpdateBoard(true)}
               >
                 <Text style={styles.update}>Update Board</Text>
               </TouchableOpacity>
@@ -87,6 +92,14 @@ const Board = function ({
               </TouchableOpacity>
             </View>
           </NativeModal>
+          <UpdateBoardModal
+            boardId={boardId}
+            setBoards={setBoards}
+            boards={boards}
+            setUpdateBoard={setUpdateBoard}
+            UpdateBoard={updateBoard}
+            setModal={setIsAddModalOpen}
+          />
         </>
 
       </View>

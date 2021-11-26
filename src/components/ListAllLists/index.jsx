@@ -7,12 +7,12 @@ import NewListButton from '../NewListButton';
 
 const List = function ({
   // eslint-disable-next-line react/prop-types
-  name, color, tasks, setTasks, lists, setLists, listId,
+  name, color, tasks, setTasks, lists, setLists, listId, allTasks,
 }) {
   return (
     <View style={{ backgroundColor: color }}>
       <Text>{name}</Text>
-      <ListAllTasks tasks={tasks} setTasks={setTasks} listId={listId} />
+      <ListAllTasks tasks={tasks} setTasks={setTasks} listId={listId} allTasks={allTasks} />
     </View>
   );
 };
@@ -31,6 +31,7 @@ const ListAllLists = function ({
         tasks={listTasks}
         setTasks={setTasks}
         listId={item.id}
+        allTasks={tasks}
       />
     );
   };
