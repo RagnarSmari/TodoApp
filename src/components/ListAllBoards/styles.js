@@ -7,5 +7,4 @@ export default StyleSheet.create({
     margin: 3.5,
     borderRadius: 20,
   },
-
 });

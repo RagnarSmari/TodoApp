@@ -46,7 +46,7 @@ const Board = function ({
           source={{ uri: photo }}
           style={styles.image}
         />
-        <Text>{title}</Text>
+        <Text style={styles.titleStyle}>{title}</Text>
         <>
           <NativeModal
             isVisible={listIsOpen}

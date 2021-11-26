@@ -31,18 +31,23 @@ const BoardView = function ({ navigation: { navigate } }) {
   }, []);
 
   return (
-    <View style={styles.secondContainer}>
-      <Text style={styles.main}>My Boards</Text>
-      <ListAllBoards
-        boards={boards}
-        navigate={navigate}
-        lists={lists}
-        setLists={setLists}
-        tasks={tasks}
-        setTasks={setTasks}
-        setBoards={setBoards}
-      />
-      <CreateBoardButton boards={boards} setBoards={setBoards} />
+    <View style={styles.container}>
+      <View style={styles.headingContainer}>
+        <Text style={styles.headingStyle}>My Boards</Text>
+      </View>
+      <View style={styles.buttonContainer}><CreateBoardButton boards={boards} setBoards={setBoards} /></View>
+
+      <View style={styles.secondContainer}>
+        <ListAllBoards
+          boards={boards}
+          navigate={navigate}
+          lists={lists}
+          setLists={setLists}
+          tasks={tasks}
+          setTasks={setTasks}
+          setBoards={setBoards}
+        />
+      </View>
     </View>
 
   );

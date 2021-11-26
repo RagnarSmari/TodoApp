@@ -12,7 +12,7 @@ const NewListButton = function ({ lists, setLists }) {
       <TouchableOpacity
         onPress={() => setIsAddModalOpen(true)}
       >
-        <Text>Create new list</Text>
+        <Text style={styles.text}>Create new list</Text>
       </TouchableOpacity>
       <CreateNewListModal
         isOpen={isAddModalOpen}

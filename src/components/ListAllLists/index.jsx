@@ -38,13 +38,14 @@ const ListAllLists = function ({
   };
   return (
     <View>
+      <NewListButton lists={lists} setLists={setLists} />
+
       <FlatList
         data={lists}
         renderItem={renderItem}
         numColumns={1}
         keyExtractor={((list) => list.id)}
       />
-      <NewListButton lists={lists} setLists={setLists} />
     </View>
   );
 };

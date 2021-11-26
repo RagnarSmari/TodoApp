@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { white, gray } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
@@ -7,7 +8,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: white,
     margin: 5,
     borderRadius: 10,
 
@@ -24,7 +25,7 @@ export default StyleSheet.create({
   },
 
   newTaskText: {
-    color: 'white',
+    color: white,
   },
 
   styleButtons: {

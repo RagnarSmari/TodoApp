@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import photo from '../../../assets/add.png';
 import CreateBoardModal from '../CreateBoardModal';
 
 const CreateBoardButton = function ({ boards, setBoards }) {
@@ -12,9 +11,10 @@ const CreateBoardButton = function ({ boards, setBoards }) {
   return (
     <View style={styles.CreateBoardButton}>
       <TouchableHighlight
+        style={styles.CreateBoardButton}
         onPress={() => setIsAddModalOpen(true)}
       >
-        <Image style={styles.addIcon} source={photo} />
+        <Text style={styles.createText}>Create new board</Text>
       </TouchableHighlight>
       <CreateBoardModal isOpen={isAddModalOpen} setIsOpen={setIsAddModalOpen} boards={boards} setBoards={setBoards} />
     </View>
