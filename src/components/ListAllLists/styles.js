@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { headings } from '../../styles';
 
 export default StyleSheet.create({
   textStyle: {

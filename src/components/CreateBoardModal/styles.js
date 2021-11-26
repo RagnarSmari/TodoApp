@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 10,
     backgroundColor: 'white',
@@ -11,7 +10,20 @@ export default StyleSheet.create({
 
   imageContainer: {
     alignItems: 'center',
-    margin: 12,
+    margin: 30,
+  },
+  SaveBtn: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'gray',
+    borderRadius: 10,
+
+  },
+
+  saveBtnText: {
+    color: 'white',
   },
 
   input: {
@@ -29,7 +41,7 @@ export default StyleSheet.create({
 
     height: 150,
     width: 150,
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 8,
   },
 
@@ -40,6 +52,8 @@ export default StyleSheet.create({
   },
 
   text: {
-    marginLeft: 12,
+    flexDirection: 'row',
+    marginLeft: 10,
+    fontSize: 16,
   },
 });

@@ -40,15 +40,16 @@ const CreateNewListModal = function ({
           placeholder="Enter name"
           keyboardType="default"
         />
-        <TouchableHighlight>
+        <TouchableHighlight style={styles.addColorBtn}>
           <Text>
             Add color
           </Text>
         </TouchableHighlight>
         <TouchableHighlight
+          style={styles.saveLaskBtn}
           onPress={() => createNewList()}
         >
-          <Text>
+          <Text style={styles.saveText}>
             Save list
           </Text>
         </TouchableHighlight>

@@ -56,9 +56,10 @@ const CreateBoardModal = function ({
           keyboardType="default"
         />
         <TouchableHighlight
+          style={styles.SaveBtn}
           onPress={() => createBoardObject()}
         >
-          <Text>Save</Text>
+          <Text style={styles.saveBtnText}>Save</Text>
         </TouchableHighlight>
       </View>
     </NativeModal>

@@ -36,13 +36,14 @@ const CreateTaskModal = function ({
           style={styles.input}
           onChangeText={(val) => setName(val)}
           value={TaskName}
-          placeholder="Enter name"
+          placeholder="Write your task"
           keyboardType="default"
         />
         <TouchableHighlight
+          style={styles.saveTaskBtn}
           onPress={() => createNewTask(listId)}
         >
-          <Text>
+          <Text style={styles.saveTaskText}>
             Save task
           </Text>
         </TouchableHighlight>
