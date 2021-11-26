@@ -64,9 +64,9 @@ const Board = function ({
             onDismiss={() => setIsAddModalOpen(false)}
                 // swipeDirection={['down']}
                 // onSwipeComplete={setListIsOpen(false)}
-            onBackButtonPress={() => setListIsOpen(false)}
+            onBackButtonPress={() => setIsAddModalOpen(false)}
             hasBackdrop
-            onBackdropPress={() => setListIsOpen(false)}
+            onBackdropPress={() => setIsAddModalOpen(false)}
           >
             <View style={styles.modalView}>
               <TouchableOpacity
