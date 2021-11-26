@@ -28,7 +28,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     margin: 10,
-    backgroundColor: 'pink',
+    height: 100,
+    backgroundColor: 'white',
     borderRadius: 10,
   },
 
@@ -36,13 +37,26 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 10,
-    margin: 10,
+    margin: 30,
     backgroundColor: 'gray',
     borderRadius: 10,
   },
 
   saveText: {
     color: 'white',
+  },
+  box: {
+    width: 15,
+    height: 15,
+    margin: 5,
+  },
+  ColorContainer: {
+    flex: 1,
+    alignContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+
   },
 
 });

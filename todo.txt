@@ -15,6 +15,7 @@ TODO:
     Create new list takkinn hverfur á bakvið þegar það eru komnir 3 listar,
     stíla edit og delete takkanna
     stíla editmodalinn í edit task
+    Henda inn text input fyrir descriptuion í new task
 
 
 

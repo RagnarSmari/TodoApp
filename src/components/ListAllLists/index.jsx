@@ -81,7 +81,7 @@ const List = function ({
 // eslint-disable-next-line react/prop-types
 const ListAllLists = function ({
   // eslint-disable-next-line react/prop-types
-  lists, setLists, tasks, setTasks, boardId,
+  lists, setLists, tasks, setTasks, boardId, allLists,
 }) {
   const renderItem = ({ item }) => {
     const listTasks = tasks.filter((s) => s.listId === item.id);
@@ -101,7 +101,7 @@ const ListAllLists = function ({
   };
   return (
     <View>
-      <NewListButton lists={lists} setLists={setLists} boardId={boardId} />
+      <NewListButton lists={allLists} setLists={setLists} boardId={boardId} />
       <FlatList
         data={lists}
         renderItem={renderItem}

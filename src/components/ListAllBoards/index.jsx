@@ -24,6 +24,7 @@ const ListAllBoards = function ({
         boardId={item.id}
         boards={boards}
         setBoards={setBoards}
+        allLists={lists}
       />
     );
   };

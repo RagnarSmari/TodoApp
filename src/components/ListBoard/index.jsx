@@ -10,7 +10,7 @@ import ListAllLists from '../ListAllLists';
 import UpdateBoardModal from '../UpdateBoardModal';
 
 const Board = function ({
-  title, photo, lists, setLists, tasks, setTasks, boardId, boards, setBoards,
+  title, photo, lists, setLists, tasks, setTasks, boardId, boards, setBoards, allLists,
 }) {
   // Deletes a board from the state array
 
@@ -50,6 +50,7 @@ const Board = function ({
                 tasks={tasks}
                 setTasks={setTasks}
                 boardId={boardId}
+                allLists={allLists}
               />
             </View>
 
