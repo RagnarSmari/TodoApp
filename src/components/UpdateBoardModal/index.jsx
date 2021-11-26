@@ -8,13 +8,21 @@ import styles from '../CreateBoardModal/styles';
 import photo from '../../../assets/image.png';
 
 const UpdateBoardModal = function ({
-  boardId, boards, setBoards, UpdateBoard, setUpdateBoard,
+  boardId, boards, setBoards, UpdateBoard, setUpdateBoard, setModal,
 }) {
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const myBoard = boards.filter(((s) => s.id === boardId));
 
   const updateBoard = () => {
-    console.log('updating');
+    const allBoards = boards;
+    const ind = boards.findIndex(((s) => s.id === boardId));
+    allBoards[ind].name = name;
+
+    setBoards(allBoards);
+    setBoards([...boards]);
+    setUpdateBoard(false);
+    setModal(false);
   };
   return (
     <NativeModal
@@ -24,6 +32,10 @@ const UpdateBoardModal = function ({
       hasBackdrop
     >
       <View style={styles.container}>
+        <Text>
+          Updating
+        </Text>
+        <Text>{myBoard.name}</Text>
         <View style={styles.imageContainer}>
           <TouchableHighlight style={styles.addImageBtn}>
             <Image style={styles.addIcon} source={photo} />

@@ -2,8 +2,7 @@
 
 TODO:
     Style-a appið
-    Allir takkar inn í töskunum virka ekki
-    Láta update board virka
+    Allir takkar inn í töskunum virka ekki - LAGA ASAP
     Búa til takka sem deletar lista
     Búa til takka sem editar lista
     Láta virka að færa tösk á milli lista
