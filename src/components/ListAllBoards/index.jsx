@@ -9,22 +9,24 @@ import Board from '../ListBoard';
 // Get the data from the resources
 
 const ListAllBoards = function ({
-  boards, navigate, deleteBoard, updatingBoard, lists, setLists, tasks, setTasks,
+  boards, navigate, lists, setLists, tasks, setTasks, setBoards,
 }) {
-  const renderItem = ({ item }) => (
-    <Board
-      photo={item.thumbnailPhoto}
-      title={item.name}
-      boardId={item.id}
-      navigate={navigate}
-      deleteBoard={deleteBoard}
-      updatingBoard={updatingBoard}
-      lists={lists}
-      setLists={setLists}
-      tasks={tasks}
-      setTasks={setTasks}
-    />
-  );
+  const renderItem = ({ item }) => {
+    const myLists = lists.filter((s) => s.boardId === item.id);
+    return (
+      <Board
+        photo={item.thumbnailPhoto}
+        title={item.name}
+        lists={myLists}
+        setLists={setLists}
+        tasks={tasks}
+        setTasks={setTasks}
+        boardId={item.id}
+        boards={boards}
+        setBoards={setBoards}
+      />
+    );
+  };
   return (
     <View>
       <FlatList
@@ -44,7 +46,5 @@ ListAllBoards.propTypes = {
     thumbnailPhoto: PropTypes.string,
   })).isRequired,
   navigate: PropTypes.func.isRequired,
-  deleteBoard: PropTypes.func.isRequired,
-  updatingBoard: PropTypes.func.isRequired,
 };
 export default ListAllBoards;

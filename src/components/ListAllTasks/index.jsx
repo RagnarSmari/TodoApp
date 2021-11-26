@@ -2,13 +2,22 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './styles';
 import * as data from '../../resources/data.json';
 import AddNewTask from '../AddNewTask';
 import CreateTaskModal from '../CreateTaskModal';
 
-const Task = function ({ name, isFinished }) {
+const Task = function ({
+  name, isFinished, tasks, setTasks, taskId,
+}) {
+  const deleteTask = () => {
+    console.log('deleting task');
+  };
+
+  const editTask = () => {
+    console.log('editing task');
+  };
   return (
     <View style={styles.container}>
       <BouncyCheckbox
@@ -21,8 +30,17 @@ const Task = function ({ name, isFinished }) {
         textStyle={{ color: 'black' }}
         style={styles.BCheckbox}
       />
-      <Text>Edit</Text>
-      <Text> Delete</Text>
+      <TouchableOpacity
+        onPress={editTask}
+      >
+        <Text>Edit</Text>
+      </TouchableOpacity>
+      <TouchableHighlight
+        onPress={deleteTask}
+      >
+        <Text> Delete</Text>
+      </TouchableHighlight>
+
     </View>
   );
 };
@@ -30,7 +48,7 @@ const Task = function ({ name, isFinished }) {
 const ListAllTasks = function ({ tasks, setTasks, listId }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const renderItem = ({ item }) => (
-    <Task name={item.name} isFinished={item.isFinished} />
+    <Task name={item.name} isFinished={item.isFinished} tasks={tasks} setTasks={setTasks} taskId={item.id} />
   );
   return (
     <View>

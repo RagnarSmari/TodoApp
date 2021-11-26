@@ -14,10 +14,15 @@ export default StyleSheet.create({
     height: '20%',
 
   },
-  view: {
-    justifyContent: 'flex-end',
+  listview: {
+    backgroundColor: 'white',
+    height: '100%',
+    width: '100%',
     margin: 0,
-
+  },
+  listcontainer: {
+    flex: 1,
+    paddingTop: '15%',
   },
   update: {
     justifyContent: 'center',

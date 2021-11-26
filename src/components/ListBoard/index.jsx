@@ -4,19 +4,37 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import NativeModal from 'react-native-modal';
+import { Menu } from 'react-native-paper';
 import styles from './styles';
+import ListAllLists from '../ListAllLists';
+import UpdateBoardModal from '../UpdateBoardModal';
 
 const Board = function ({
-  title, photo, boardId, navigate, deleteBoard, updatingBoard,
+  title, photo, lists, setLists, tasks, setTasks, boardId, boards, setBoards,
 }) {
   // Deletes a board from the state array
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [updateBoard, setUpdateBoard] = useState(false);
+  const [listIsOpen, setListIsOpen] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(true);
+  // <UpdateBoardModal
+  //     boardId={boardId}
+  //     setBoards={setBoards}
+  //     boards={boards}
+  //     setUpdateBoard={setUpdateBoard}
+  //     UpdateBoard={updateBoard}
+  // />
+  const updatingBoard = () => {
+    console.log('updating');
+  };
+  const deleteBoard = () => {
+    setBoards(boards.filter((item) => item.id !== boardId));
+    setIsAddModalOpen(false);
+  };
   return (
     <TouchableHighlight
-      onPress={() => navigate('ListView', {
-        boardId,
-      })}
+      onPress={() => setListIsOpen(!listIsOpen)}
       onLongPress={() => setIsAddModalOpen(true)}
     >
       <View>
@@ -25,30 +43,52 @@ const Board = function ({
           style={styles.image}
         />
         <Text>{title}</Text>
-        <NativeModal
-          style={styles.view}
-          visible={isAddModalOpen}
-          animationIn="slideInUp"
-          onRequestClose={() => setIsAddModalOpen(false)}
-          onDismiss={() => setIsAddModalOpen(false)}
-          // onSwipeComplete={this.close}
-          swipeDirection={['down']}
-          hasBackdrop
+        <>
+          <NativeModal
+            isVisible={listIsOpen}
+            onBackButtonPress={() => setListIsOpen(false)}
+            swipeDirection={['right']}
+            onSwipeComplete={() => setListIsOpen(false)}
+            style={styles.listview}
 
-        >
-          <View style={styles.modalView}>
-            <TouchableOpacity
-              onPress={updatingBoard}
-            >
-              <Text style={styles.update}>Update Board</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={deleteBoard}
-            >
-              <Text>Delete Board</Text>
-            </TouchableOpacity>
-          </View>
-        </NativeModal>
+          >
+            <View style={styles.listcontainer}>
+              <ListAllLists
+                lists={lists}
+                setLists={setLists}
+                tasks={tasks}
+                setTasks={setTasks}
+              />
+            </View>
+
+          </NativeModal>
+
+          <NativeModal
+            style={styles.view}
+            visible={isAddModalOpen}
+            animationIn="slideInUp"
+            onRequestClose={() => setIsAddModalOpen(false)}
+            onDismiss={() => setIsAddModalOpen(false)}
+              // onSwipeComplete={this.close}
+            swipeDirection={['down']}
+            hasBackdrop
+
+          >
+            <View style={styles.modalView}>
+              <TouchableOpacity
+                onPress={updatingBoard}
+              >
+                <Text style={styles.update}>Update Board</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={deleteBoard}
+              >
+                <Text>Delete Board</Text>
+              </TouchableOpacity>
+            </View>
+          </NativeModal>
+        </>
+
       </View>
     </TouchableHighlight>
   );
@@ -56,10 +96,6 @@ const Board = function ({
 Board.propTypes = {
   title: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
-  boardId: PropTypes.number.isRequired,
-  navigate: PropTypes.func.isRequired,
-  deleteBoard: PropTypes.func.isRequired,
-  updatingBoard: PropTypes.func.isRequired,
 };
 
 export default Board;

@@ -1,36 +1,27 @@
 import React from 'react';
-import {
-  View, Text, Image, TouchableHighlight, TextComponent, TextInput,
-} from 'react-native';
+import { Text } from 'react-native-paper';
 import NativeModal from 'react-native-modal';
-import PropTypes from 'prop-types';
-import styles from './styles';
+import {
+  Image, TextInput, TouchableHighlight, View,
+} from 'react-native';
+import styles from '../CreateBoardModal/styles';
 import photo from '../../../assets/image.png';
 
-const CreateBoardModal = function ({
-  isOpen, setIsOpen, boards, setBoards,
+const UpdateBoardModal = function ({
+  boardId, boards, setBoards, UpdateBoard, setUpdateBoard,
 }) {
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
 
-  const createBoardObject = () => {
-    const imgUrl = 'https://i.pinimg.com/474x/45/11/c5/4511c5871ff8011385b023be70878d81.jpg';
-    const id = boards.length + 1;
-    const newBoard = {
-      id,
-      name,
-      thumbnailPhoto: imgUrl,
-    };
-    setBoards([...boards, newBoard]);
+  const updateBoard = () => {
+    console.log('updating');
   };
-
   return (
     <NativeModal
-      visible={isOpen}
-      onRequestClose={() => setIsOpen(false)}
-      onDismiss={() => setIsOpen(false)}
+      visible={UpdateBoard}
+      onRequestClose={() => setUpdateBoard(false)}
+      onDismiss={() => setUpdateBoard(false)}
       hasBackdrop
-      onBackdropPress={() => setIsOpen(false)}
     >
       <View style={styles.container}>
         <View style={styles.imageContainer}>
@@ -56,7 +47,7 @@ const CreateBoardModal = function ({
           keyboardType="default"
         />
         <TouchableHighlight
-          onPress={() => createBoardObject()}
+          onPress={() => updateBoard()}
         >
           <Text>Save</Text>
         </TouchableHighlight>
@@ -65,16 +56,4 @@ const CreateBoardModal = function ({
   );
 };
 
-CreateBoardModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  setIsOpen: PropTypes.func.isRequired,
-  boards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    thumbnailPhoto: PropTypes.string.isRequired,
-  })).isRequired,
-  setBoards: PropTypes.func.isRequired,
-
-};
-
-export default CreateBoardModal;
+export default UpdateBoardModal;

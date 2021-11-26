@@ -7,7 +7,7 @@ import NewListButton from '../NewListButton';
 
 const List = function ({
   // eslint-disable-next-line react/prop-types
-  name, color, tasks, setTasks, listId,
+  name, color, tasks, setTasks, lists, setLists, listId,
 }) {
   return (
     <View style={{ backgroundColor: color }}>
@@ -20,7 +20,7 @@ const List = function ({
 // eslint-disable-next-line react/prop-types
 const ListAllLists = function ({
   // eslint-disable-next-line react/prop-types
-  lists, setLists, tasks, setTasks,
+  lists, setLists, tasks, setTasks, boardId,
 }) {
   const renderItem = ({ item }) => {
     const listTasks = tasks.filter((s) => s.listId === item.id);
@@ -34,7 +34,6 @@ const ListAllLists = function ({
       />
     );
   };
-
   return (
     <View>
       <FlatList
