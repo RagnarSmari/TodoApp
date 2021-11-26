@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Image, Text, View, TouchableHighlight, TouchableOpacity, Animated,
+  Image, Text, View, TouchableHighlight, TouchableOpacity, Animated, ScrollView,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import NativeModal from 'react-native-modal';
@@ -40,7 +40,9 @@ const Board = function ({
             swipeDirection={['right']}
             onSwipeComplete={() => setListIsOpen(false)}
             style={styles.listview}
+            propagateSwipe
           >
+
             <View style={styles.listcontainer}>
               <ListAllLists
                 lists={lists}
@@ -88,7 +90,6 @@ const Board = function ({
             setModal={setIsAddModalOpen}
           />
         </>
-
       </View>
     </TouchableHighlight>
   );
