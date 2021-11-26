@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Image, Text, View, TouchableHighlight, TouchableOpacity,
+  Image, Text, View, TouchableHighlight, TouchableOpacity, Animated,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import NativeModal from 'react-native-modal';
@@ -17,8 +17,6 @@ const Board = function ({
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [updateBoard, setUpdateBoard] = useState(false);
   const [listIsOpen, setListIsOpen] = useState(false);
-  const [isModalVisible, setModalVisible] = useState(true);
-  const [image, setImage] = useState(null);
 
   const deleteBoard = () => {
     setBoards(boards.filter((item) => item.id !== boardId));
