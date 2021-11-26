@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import {
-  FlatList, Text, View, Button, TextInput, TouchableOpacity, TouchableHighlight,
+  FlatList, Text, View, Button, TextInput, TouchableOpacity, TouchableHighlight, Animated, PanResponder,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import NativeModal from 'react-native-modal';
+import AnimatedView from 'react-native-web/dist/vendor/react-native/Animated/components/AnimatedView';
 import styles from './styles';
 import * as data from '../../resources/data.json';
 import AddNewTask from '../AddNewTask';
 import CreateTaskModal from '../CreateTaskModal';
 
+// eslint-disable-next-line func-names
 const Task = function ({
   name, isFinished, tasks, setTasks, taskId, allTasks, description,
 }) {
@@ -17,6 +19,7 @@ const Task = function ({
   const [editDescription, setEditDescription] = useState('');
   const [editingTask, setEditingTask] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+
   const deleteTask = () => {
     setTasks(allTasks.filter((s) => s.id !== taskId));
   };
