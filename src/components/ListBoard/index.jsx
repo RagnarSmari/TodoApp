@@ -4,20 +4,21 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import NativeModal from 'react-native-modal';
-import { Menu } from 'react-native-paper';
 import styles from './styles';
 import ListAllLists from '../ListAllLists';
 import UpdateBoardModal from '../UpdateBoardModal';
 
 const Board = function ({
-  title, photo, lists, setLists, tasks, setTasks, boardId, boards, setBoards, allLists,
+  title, photo, lists, setLists, tasks, setTasks, boardId, boards, setBoards, allLists, description,
 }) {
   // Deletes a board from the state array
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [updateBoard, setUpdateBoard] = useState(false);
   const [listIsOpen, setListIsOpen] = useState(false);
-
+  if (photo === null) {
+    photo = 'https://www.biography.com/.image/t_share/MTQ3NTI2OTc4MDI1NTYzNjMw/common_photo_by_maarten_de_boer_getty_images_entertainment_getty_461469844.jpg';
+  }
   const deleteBoard = () => {
     setBoards(boards.filter((item) => item.id !== boardId));
     setIsAddModalOpen(false);
@@ -33,6 +34,7 @@ const Board = function ({
           style={styles.image}
         />
         <Text style={styles.titleStyle}>{title}</Text>
+        <Text style={styles.titleStyle}>{description}</Text>
         <>
           <NativeModal
             isVisible={listIsOpen}

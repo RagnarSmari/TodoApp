@@ -31,12 +31,13 @@ const CreateBoardModal = function ({
   };
 
   const createBoardObject = () => {
+    setIsOpen(false);
     const imgUrl = image;
-    const id = boards.length + 1;
     const newBoard = {
-      id,
+      id: Math.random() * 98712334,
       name,
       thumbnailPhoto: imgUrl,
+      description,
     };
     setBoards([...boards, newBoard]);
   };

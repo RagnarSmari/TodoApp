@@ -36,7 +36,7 @@ const UpdateBoardModal = function ({
     const ind = boards.findIndex(((s) => s.id === boardId));
     allBoards[ind].name = name;
     allBoards[ind].thumbnailPhoto = image;
-
+    allBoards[ind].description = description;
     setBoards(allBoards);
     setBoards([...boards]);
     setUpdateBoard(false);

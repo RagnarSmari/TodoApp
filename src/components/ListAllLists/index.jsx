@@ -11,7 +11,7 @@ import NewListButton from '../NewListButton';
 
 const List = function ({
   // eslint-disable-next-line react/prop-types
-  name, color, tasks, setTasks, lists, setLists, listId, allTasks, boardId,
+  name, color, tasks, setTasks, lists, setLists, listId, allTasks, allLists,
 }) {
   const [listOptions, setListOptions] = useState(false);
   const [listName, setListName] = React.useState('');
@@ -28,8 +28,7 @@ const List = function ({
   };
 
   const deleteList = () => {
-    setLists(lists.filter((s) => s.id !== listId));
-    setListOptions(false);
+    setLists(allLists.filter((s) => s.id !== listId));
   };
   return (
     <View style={{ backgroundColor: color, margin: 5, borderRadius: 10 }}>
@@ -131,6 +130,7 @@ const ListAllLists = function ({
         lists={lists}
         setLists={setLists}
         boardId={item.boardId}
+        allLists={allLists}
       />
     );
   };

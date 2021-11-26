@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { white, gray } from '../../styles';
 
 export default StyleSheet.create({
   textStyle: {

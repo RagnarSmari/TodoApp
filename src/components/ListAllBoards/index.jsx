@@ -13,6 +13,25 @@ const ListAllBoards = function ({
 }) {
   const renderItem = ({ item }) => {
     const myLists = lists.filter((s) => s.boardId === item.id);
+    console.log(item.description);
+    if (item.description === undefined) {
+      return (
+        <Board
+          photo={item.thumbnailPhoto}
+          title={item.name}
+          lists={myLists}
+          setLists={setLists}
+          tasks={tasks}
+          setTasks={setTasks}
+          boardId={item.id}
+          boards={boards}
+          setBoards={setBoards}
+          allLists={lists}
+          description=" "
+        />
+      );
+    }
+
     return (
       <Board
         photo={item.thumbnailPhoto}
@@ -25,6 +44,7 @@ const ListAllBoards = function ({
         boards={boards}
         setBoards={setBoards}
         allLists={lists}
+        description={item.description}
       />
     );
   };

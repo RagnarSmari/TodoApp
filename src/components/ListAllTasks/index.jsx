@@ -5,16 +5,13 @@ import {
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import NativeModal from 'react-native-modal';
-import AnimatedView from 'react-native-web/dist/vendor/react-native/Animated/components/AnimatedView';
+
 import styles from './styles';
-import * as data from '../../resources/data.json';
-import AddNewTask from '../AddNewTask';
 import CreateTaskModal from '../CreateTaskModal';
-import MoveTaskModal from '../MoveTaskModal';
 
 // eslint-disable-next-line func-names
 const Task = function ({
-  name, isFinished, tasks, setTasks, taskId, allTasks, description, allLists,
+  name, isFinished, setTasks, taskId, allTasks, description, allLists,
 }) {
   const [editName, setEditName] = React.useState('');
   const [editDescription, setEditDescription] = useState('');

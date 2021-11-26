@@ -13,6 +13,7 @@ const CreateNewListModal = function ({
   const [color, setColor] = React.useState('red');
 
   const createNewList = () => {
+    setIsOpen(false);
     const bId = boardId;
     const newList = {
       id: Math.random() * 10000,
