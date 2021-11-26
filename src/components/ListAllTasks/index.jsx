@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  FlatList, Text, View, Button, TextInput,
+  FlatList, Text, View, Button, TextInput, TouchableOpacity, TouchableHighlight,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import NativeModal from 'react-native-modal';
 import styles from './styles';
 import * as data from '../../resources/data.json';
@@ -12,17 +11,26 @@ import AddNewTask from '../AddNewTask';
 import CreateTaskModal from '../CreateTaskModal';
 
 const Task = function ({
-  name, isFinished, tasks, setTasks, taskId, allTasks,
+  name, isFinished, tasks, setTasks, taskId, allTasks, description,
 }) {
+  const [editName, setEditName] = React.useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editingTask, setEditingTask] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
   const deleteTask = () => {
     setTasks(allTasks.filter((s) => s.id !== taskId));
   };
 
   const editTask = () => {
-    console.log('saving the edit');
+    setEditingTask(false);
+    const newArr = allTasks;
+    const ind = allTasks.findIndex((s) => s.id === taskId);
+    newArr[ind].name = editName;
+    newArr[ind].description = editDescription;
+    setTasks(newArr);
+    setTasks([...newArr]);
   };
-  const [editName, setEditName] = React.useState('');
-  const [editingTask, setEditingTask] = useState(false);
+
   return (
     <View style={styles.container}>
       <BouncyCheckbox
@@ -35,23 +43,43 @@ const Task = function ({
         textStyle={{ color: 'black' }}
         style={styles.BCheckbox}
       />
-      <View style={styles.EditBtnContainer}>
-        <Button
-          style={styles.button}
-          title="Edit"
-          onPress={() => setEditingTask(true)}
-        />
-      </View>
-      <View style={styles.DeleteBtnContainer}>
-        <Button
-          title="Delete"
-          onPress={deleteTask}
-        />
+      <View style={styles.BtnContainer}>
+        <View style={styles.DeleteBtnContainer}>
+          <TouchableOpacity onPress={deleteTask}>
+            <Text>Delete</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.EditBtnContainer}>
+          <TouchableOpacity onPress={() => setEditingTask(true)}>
+            <Text>Edit    </Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => setShowDescription(true)}>
+            <Text>Show Description    </Text>
+          </TouchableOpacity>
+        </View>
+        <NativeModal
+          isVisible={showDescription}
+          style={{ backgroundColor: 'white' }}
+          onRequestClose={() => setShowDescription(false)}
+        >
+          <Button
+            title="close"
+            onPress={() => setShowDescription(false)}
+          />
+          <Text>{description}</Text>
+        </NativeModal>
       </View>
       <NativeModal
         isVisible={editingTask}
         style={{ backgroundColor: 'white' }}
+        onRequestClose={() => setEditingTask(false)}
       >
+        <Button
+          title="CLose"
+          onPress={() => setEditingTask(false)}
+        />
         <Text>Edit name of task</Text>
         <TextInput
           value={editName}
@@ -59,11 +87,18 @@ const Task = function ({
           placeholder="New Name of task"
           keyboardType="default"
         />
-        <TouchableOpacity
+        <Text>Edit description of task</Text>
+        <TextInput
+          value={editDescription}
+          onChangeText={(val) => setEditDescription(val)}
+          placeholder="New description of task"
+          keyboardType="default"
+        />
+        <Button
+          title="Save"
           onPress={editTask}
-        >
-          <Text>Save</Text>
-        </TouchableOpacity>
+        />
+
       </NativeModal>
 
     </View>
@@ -75,7 +110,15 @@ const ListAllTasks = function ({
 }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const renderItem = ({ item }) => (
-    <Task name={item.name} isFinished={item.isFinished} tasks={tasks} setTasks={setTasks} taskId={item.id} allTasks={allTasks} />
+    <Task
+      name={item.name}
+      isFinished={item.isFinished}
+      tasks={tasks}
+      setTasks={setTasks}
+      taskId={item.id}
+      allTasks={allTasks}
+      description={item.description}
+    />
   );
   return (
     <View style={styles.listContainer}>
@@ -94,7 +137,7 @@ const ListAllTasks = function ({
       <CreateTaskModal
         isOpen={isAddModalOpen}
         setIsOpen={setIsAddModalOpen}
-        tasks={tasks}
+        tasks={allTasks}
         setTasks={setTasks}
         listId={listId}
       />

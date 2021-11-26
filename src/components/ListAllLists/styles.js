@@ -9,4 +9,9 @@ export default StyleSheet.create({
     marginTop: 10,
 
   },
+  ModalContainerCreateList: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: '100%',
+  },
 });

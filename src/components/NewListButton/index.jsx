@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CreateNewListModal from '../CreateNewListModal';
 import styles from './styles';
 
-const NewListButton = function ({ lists, setLists }) {
+const NewListButton = function ({ lists, setLists, boardId }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   return (
@@ -19,6 +19,7 @@ const NewListButton = function ({ lists, setLists }) {
         setIsOpen={setIsAddModalOpen}
         lists={lists}
         setLists={setLists}
+        boardId={boardId}
       />
     </View>
 
@@ -33,6 +34,7 @@ NewListButton.propTypes = {
     boardId: PropTypes.number.isRequired,
   })).isRequired,
   setLists: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired,
 
 };
 

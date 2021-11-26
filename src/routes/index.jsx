@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import BoardView from '../views/BoardView';
-import ListView from '../views/ListView';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +11,6 @@ const Routes = function () {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Main">
         <Stack.Screen name="BoardView" component={BoardView} />
-        <Stack.Screen name="ListView" component={ListView} />
       </Stack.Navigator>
     </NavigationContainer>
   );
