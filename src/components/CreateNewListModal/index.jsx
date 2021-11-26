@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const CreateNewListModal = function ({
-  isOpen, setIsOpen, lists, setLists,
+  isOpen, setIsOpen, lists, setLists, boardId,
 }) {
   const [ListName, setName] = React.useState('');
 
   const createNewList = () => {
-    const bId = lists[0].boardId;
+    const bId = boardId;
     const newList = {
       id: Math.random() * 10000,
       name: ListName,

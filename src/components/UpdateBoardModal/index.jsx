@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text } from 'react-native-paper';
 import NativeModal from 'react-native-modal';
 import {
+  Button,
   Image, TextInput, TouchableHighlight, View,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import styles from '../CreateBoardModal/styles';
 import photo from '../../../assets/image.png';
 
@@ -13,11 +15,27 @@ const UpdateBoardModal = function ({
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
   const myBoard = boards.filter(((s) => s.id === boardId));
+  const [image, setImage] = useState(null);
 
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    // console.log(result.uri);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
   const updateBoard = () => {
     const allBoards = boards;
     const ind = boards.findIndex(((s) => s.id === boardId));
     allBoards[ind].name = name;
+    allBoards[ind].thumbnailPhoto = image;
 
     setBoards(allBoards);
     setBoards([...boards]);
@@ -38,7 +56,10 @@ const UpdateBoardModal = function ({
         <Text>{myBoard.name}</Text>
         <View style={styles.imageContainer}>
           <TouchableHighlight style={styles.addImageBtn}>
-            <Image style={styles.addIcon} source={photo} />
+            <View>
+              <Button title="Pick an image from camera roll" onPress={pickImage} />
+              {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+            </View>
           </TouchableHighlight>
         </View>
         <Text style={styles.text}> Name your board:</Text>

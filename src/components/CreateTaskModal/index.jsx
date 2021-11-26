@@ -9,8 +9,8 @@ const CreateTaskModal = function ({
   isOpen, setIsOpen, tasks, setTasks, listId,
 }) {
   const [TaskName, setName] = React.useState('');
-
   const createNewTask = () => {
+    setIsOpen(false);
     const newTask = {
       id: Math.random() * 100000,
       name: TaskName,

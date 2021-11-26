@@ -39,16 +39,9 @@ export default StyleSheet.create({
   BCheckbox: {
     width: 'auto',
   },
-  EditBtnContainer: {
-    flex: 2,
-    flexDirection: 'row',
 
-  },
-  DeleteBtnContainer: {
-    flex: 2,
-    flexDirection: 'row-reverse',
-  },
   BtnContainer: {
     flexDirection: 'row-reverse',
   },
+
 });
