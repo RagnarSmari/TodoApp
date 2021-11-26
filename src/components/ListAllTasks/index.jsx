@@ -10,15 +10,17 @@ import styles from './styles';
 import * as data from '../../resources/data.json';
 import AddNewTask from '../AddNewTask';
 import CreateTaskModal from '../CreateTaskModal';
+import MoveTaskModal from '../MoveTaskModal';
 
 // eslint-disable-next-line func-names
 const Task = function ({
-  name, isFinished, tasks, setTasks, taskId, allTasks, description,
+  name, isFinished, tasks, setTasks, taskId, allTasks, description, allLists,
 }) {
   const [editName, setEditName] = React.useState('');
   const [editDescription, setEditDescription] = useState('');
   const [editingTask, setEditingTask] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [moveTaskMenu, setMoveTaskMenu] = useState(false);
 
   const deleteTask = () => {
     setTasks(allTasks.filter((s) => s.id !== taskId));
@@ -32,6 +34,23 @@ const Task = function ({
     newArr[ind].description = editDescription;
     setTasks(newArr);
     setTasks([...newArr]);
+  };
+
+  const renderAvailableLists = ({ item }) => {
+    const moveTask = () => {
+      const newTaskArr = allTasks;
+      const ind = newTaskArr.findIndex((s) => s.id === taskId);
+      newTaskArr[ind].listId = item.id;
+      setTasks(newTaskArr);
+      setTasks([...newTaskArr]);
+    };
+    return (
+      <TouchableOpacity
+        onPress={() => moveTask()}
+      >
+        <Text>{item.name}</Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
@@ -62,6 +81,29 @@ const Task = function ({
             <Text>Show Description    </Text>
           </TouchableOpacity>
         </View>
+        <View>
+          <TouchableOpacity onPress={() => setMoveTaskMenu(true)}>
+            <Text>Move Task</Text>
+          </TouchableOpacity>
+        </View>
+
+        <NativeModal
+          isVisible={moveTaskMenu}
+          onRequirestClose={() => setMoveTaskMenu(false)}
+          style={{ backgroundColor: 'white' }}
+        >
+          <Button
+            title="Close"
+            onPress={() => setMoveTaskMenu(false)}
+          />
+          <FlatList
+            data={allLists}
+            renderItem={renderAvailableLists}
+            numColumns={1}
+            keyExtractor={((list) => list.id)}
+          />
+        </NativeModal>
+
         <NativeModal
           isVisible={showDescription}
           style={{ backgroundColor: 'white' }}
@@ -109,7 +151,7 @@ const Task = function ({
 };
 
 const ListAllTasks = function ({
-  tasks, setTasks, listId, allTasks,
+  tasks, setTasks, listId, allTasks, allLists,
 }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const renderItem = ({ item }) => (
@@ -121,6 +163,7 @@ const ListAllTasks = function ({
       taskId={item.id}
       allTasks={allTasks}
       description={item.description}
+      allLists={allLists}
     />
   );
   return (

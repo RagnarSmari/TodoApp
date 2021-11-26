@@ -73,7 +73,7 @@ const List = function ({
           title="Save Changes"
         />
       </NativeModal>
-      <ListAllTasks tasks={tasks} setTasks={setTasks} listId={listId} allTasks={allTasks} />
+      <ListAllTasks tasks={tasks} setTasks={setTasks} listId={listId} allTasks={allTasks} allLists={lists} />
     </View>
   );
 };
