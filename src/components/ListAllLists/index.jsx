@@ -38,7 +38,7 @@ const List = function ({
         onPress={() => setListOptions(true)}
         onRequestClose={() => setListOptions(false)}
       >
-        <Text>Click here for options</Text>
+        <Text style={styles.optionText}> Options</Text>
       </TouchableOpacity>
       <NativeModal
         isVisible={listOptions}
@@ -47,14 +47,16 @@ const List = function ({
       >
         <Button
           title="Close"
+          background
           onPress={() => setListOptions(false)}
         />
         <Button
           title="Delete List"
           onPress={() => deleteList()}
         />
-        <Text>Name:</Text>
+        <Text style={styles.text}>Name:</Text>
         <TextInput
+          style={styles.input}
           value={listName}
           onChangeText={(s) => setListName(s)}
           placeholder="New name of list"
@@ -63,6 +65,8 @@ const List = function ({
         <Text>New Color(Please put hex value, we recommend #964B00 (brown))</Text>
 
         <TextInput
+          style={styles.input}
+
           value={listColor}
           onChangeText={(s) => setListColor(s)}
           placeholder="New color of list"
