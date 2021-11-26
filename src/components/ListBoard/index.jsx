@@ -20,18 +20,6 @@ const Board = function ({
   const [isModalVisible, setModalVisible] = useState(true);
   const [image, setImage] = useState(null);
 
-  const updatingBoard = () => {
-    setUpdateBoard(true);
-    return (
-      <UpdateBoardModal
-        boardId={boardId}
-        setBoards={setBoards}
-        boards={boards}
-        setUpdateBoard={setUpdateBoard}
-        UpdateBoard={updateBoard}
-      />
-    );
-  };
   const deleteBoard = () => {
     setBoards(boards.filter((item) => item.id !== boardId));
     setIsAddModalOpen(false);
@@ -61,6 +49,7 @@ const Board = function ({
                 setLists={setLists}
                 tasks={tasks}
                 setTasks={setTasks}
+                boardId={boardId}
               />
             </View>
 

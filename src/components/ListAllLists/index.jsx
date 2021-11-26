@@ -13,7 +13,6 @@ const List = function ({
   // eslint-disable-next-line react/prop-types
   name, color, tasks, setTasks, lists, setLists, listId, allTasks, boardId,
 }) {
-  console.log(lists);
   const [listOptions, setListOptions] = useState(false);
   const [listName, setListName] = React.useState('');
   const [listColor, setListColor] = React.useState('');
@@ -82,9 +81,8 @@ const List = function ({
 // eslint-disable-next-line react/prop-types
 const ListAllLists = function ({
   // eslint-disable-next-line react/prop-types
-  lists, setLists, tasks, setTasks,
+  lists, setLists, tasks, setTasks, boardId,
 }) {
-  const boardId = null;
   const renderItem = ({ item }) => {
     const listTasks = tasks.filter((s) => s.listId === item.id);
     return (
@@ -103,8 +101,7 @@ const ListAllLists = function ({
   };
   return (
     <View>
-      <NewListButton lists={lists} setLists={setLists} />
-
+      <NewListButton lists={lists} setLists={setLists} boardId={boardId} />
       <FlatList
         data={lists}
         renderItem={renderItem}
